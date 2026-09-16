@@ -3,36 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <meta
     name="description"
-    content="웹 개발 경험과 데이터사이언스 석사 배경을 바탕으로, 문제의 맥락을 이해하고 근거 있는 답을 찾아가는 박길수의 개인 소개입니다."
+    content="웹 개발과 데이터사이언스 연구를 바탕으로, 문제를 확인하고 경험을 연결하는 박길수의 개인 페이지입니다."
   >
-
-  <meta name="theme-color" content="#f7f5ef">
-
+  <meta name="theme-color" content="#f5f7fa">
   <link
     rel="icon"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23245c49'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23f7f5ef'/%3E%3C/svg%3E"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231c4e91'/%3E%3Cpath d='M19 17h8v30h-8zm13 0h13v8H32zm0 22h13v8H32z' fill='white'/%3E%3C/svg%3E"
   >
-
-  <title>박길수 — 문제를 이해하고, 근거 있는 답을 찾습니다</title>
+  <title>박길수 — 문제를 살피고, 경험을 연결합니다</title>
 
   <style>
     :root {
       color-scheme: light;
 
-      --paper: #f7f5ef;
-      --card: #fffefd;
-      --soft: #eaf0e9;
-
-      --ink: #1f2925;
-      --muted: #4f5f56;
-      --green: #245c49;
-      --brown: #874b31;
-
-      --line: #d7dfd6;
-      --focus: #20543f;
+      --background: #f5f7fa;
+      --surface: #ffffff;
+      --ink: #192332;
+      --body: #344256;
+      --muted: #526175;
+      --accent: #1c4e91;
+      --tint: #edf3fb;
+      --line: #ced6e0;
+      --focus: #1858b7;
     }
 
     *,
@@ -43,864 +37,1221 @@
 
     html {
       scroll-behavior: auto;
-      scroll-padding-top: 20px;
+      scroll-padding-top: 24px;
     }
 
     body {
       margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-
+      background: var(--background);
+      color: var(--body);
       font-family:
         "Pretendard",
+        "Noto Sans KR",
         "Apple SD Gothic Neo",
         "Malgun Gothic",
         system-ui,
+        -apple-system,
         sans-serif;
-
-      line-height: 1.65;
+      font-size: 18px;
+      line-height: 1.75;
       word-break: keep-all;
       overflow-wrap: anywhere;
     }
 
-    h1, h2, h3, p, dl, dd {
+    h1,
+    h2,
+    h3,
+    p,
+    dl,
+    dd {
       margin: 0;
     }
 
+    h1,
+    h2,
+    h3 {
+      color: var(--ink);
+      letter-spacing: -0.045em;
+    }
+
+    h1 {
+      font-size: clamp(40px, 3.5vw, 60px);
+      line-height: 1.24;
+    }
+
+    h2 {
+      font-size: 32px;
+      line-height: 1.4;
+    }
+
+    h3 {
+      font-size: 26px;
+      line-height: 1.45;
+    }
+
     a {
-      color: inherit;
-      text-decoration: none;
+      color: var(--accent);
+      text-underline-offset: 5px;
     }
 
-    a:focus-visible {
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
       outline: 3px solid var(--focus);
-      outline-offset: 4px;
-      border-radius: 5px;
+      outline-offset: 5px;
     }
 
-    .shell {
-      width: min(1480px, calc(100% - 64px));
+    ::selection {
+      background: #d8e7fb;
+      color: var(--ink);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .wrap {
+      width: min(1360px, calc(100% - 80px));
       margin-inline: auto;
     }
 
-    /* 키보드 이용자를 위한 본문 바로가기 */
+    /* 키보드 사용자를 위한 본문 이동 */
     .skip-link {
       position: fixed;
+      z-index: 10;
       top: 12px;
       left: 16px;
-      z-index: 100;
-
-      padding: 10px 16px;
-      border-radius: 8px;
-
-      color: #fff;
+      padding: 10px 18px;
       background: var(--ink);
-
-      transform: translateY(-180%);
+      color: #ffffff;
+      transform: translateY(-200%);
     }
 
     .skip-link:focus {
-      transform: translateY(0);
+      transform: none;
     }
 
     /* 상단 메뉴 */
     .site-header {
+      background: var(--surface);
       border-bottom: 1px solid var(--line);
     }
 
-    .nav {
+    .header-inner {
+      min-height: 76px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
-
-      min-height: 60px;
+      align-items: center;
+      gap: 24px;
     }
 
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-
-      min-height: 44px;
-
-      font-size: 13px;
+      font-size: 22px;
       font-weight: 800;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-    }
-
-    .brand::before {
-      content: "";
-
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-
-      background: var(--green);
+      color: var(--ink);
+      text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 8px 24px;
     }
 
     .nav-links a {
       display: inline-flex;
       align-items: center;
-
       min-height: 44px;
-
-      color: var(--muted);
-      font-size: 13px;
+      color: var(--body);
+      font-weight: 650;
+      text-decoration: none;
     }
 
     .nav-links a:hover {
-      color: var(--green);
+      color: var(--accent);
       text-decoration: underline;
     }
 
-    /*
-      소개·활동·경험 근거를 모두 페이지 상단에 배치합니다.
-      내용을 접거나 가려서 화면 높이를 맞추지 않습니다.
-    */
-    .overview {
-      padding-block: 26px 24px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns:
-        minmax(0, 1.2fr)
-        minmax(0, 0.8fr);
-
-      align-items: stretch;
-      gap: 28px;
-    }
-
-    .hero > *,
-    .approach-grid > *,
-    .background-grid > * {
-      min-width: 0;
-    }
-
+    /* 첫 화면 소개 */
     .intro {
-      padding-block: 4px;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 34px 0 28px;
     }
 
     .eyebrow {
       margin-bottom: 10px;
-
-      color: var(--green);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 750;
     }
 
-    h1 {
-      font-size: clamp(34px, 3.1vw, 52px);
-      line-height: 1.22;
-      letter-spacing: -0.055em;
-      font-weight: 800;
+    .intro-copy {
+      max-width: 560px;
     }
 
-    h1 span {
-      display: block;
-    }
-
-    h1 .accent {
-      color: var(--green);
-    }
-
-    .intro-text {
-      max-width: 740px;
-      margin-top: 14px;
-
-      color: var(--muted);
-      font-size: 15px;
+    .intro-copy p {
+      font-size: 20px;
       line-height: 1.75;
     }
 
-    .background-line {
-      margin-top: 14px;
-
-      color: var(--green);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    /* 관심과 활동 */
-    .activity {
-      padding: 20px 22px;
-
-      border: 1px solid var(--line);
-      border-radius: 20px;
-
-      background: var(--soft);
-    }
-
-    .activity h2 {
-      margin-bottom: 15px;
-
-      font-size: 23px;
-      line-height: 1.35;
-      letter-spacing: -0.035em;
-    }
-
-    .activity-list {
-      display: grid;
-      gap: 13px;
-    }
-
-    .activity-list > div {
-      display: grid;
-      grid-template-columns: 68px minmax(0, 1fr);
-      gap: 10px;
-
-      align-items: start;
-    }
-
-    .activity-list dt {
-      color: var(--green);
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .activity-list dd {
+    .intro-copy .background-line {
+      margin-top: 12px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 18px;
     }
 
-    /* 접근 방식과 경험 근거 */
-    .approach {
-      margin-top: 24px;
+    /* 첫 화면의 세 강점 */
+    .overview {
+      padding-bottom: 44px;
     }
 
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-
-      gap: 8px 16px;
-      margin-bottom: 12px;
+    .overview > h2 {
+      margin-bottom: 18px;
+      font-size: 28px;
     }
 
-    .section-head h2 {
-      font-size: 23px;
-      line-height: 1.35;
-      letter-spacing: -0.035em;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .approach-grid {
+    .strength-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-
-      align-items: stretch;
+      gap: 20px;
     }
 
-    .approach-card {
-      padding: 18px;
-
+    .strength-card {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+      background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 18px;
-
-      background: var(--card);
+      border-radius: 12px;
     }
 
-    .approach-card h3 {
+    .card-meta {
       margin-bottom: 10px;
+      color: var(--accent);
+      font-weight: 750;
+    }
 
-      font-size: 18px;
+    .strength-card h3 {
+      margin-bottom: 12px;
+      font-size: 25px;
       line-height: 1.4;
-      letter-spacing: -0.04em;
     }
 
-    .number {
-      margin-right: 7px;
-
-      color: var(--brown);
-      font-size: 12px;
-    }
-
-    .approach-copy {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.65;
+    .strength-card .activity {
+      margin-bottom: 16px;
     }
 
     .proof {
-      margin-top: 12px;
-      padding-top: 10px;
-
+      margin-top: auto;
+      padding-top: 14px;
       border-top: 1px solid var(--line);
-
-      font-size: 13px;
-      line-height: 1.6;
+      color: var(--ink);
     }
 
     .proof strong {
-      color: var(--green);
+      margin-right: 8px;
+      color: var(--accent);
     }
 
-    /* 첫 화면 내용을 보충하는 배경 설명 */
-    .background-section {
-      margin-top: 42px;
-      padding-block: 32px;
+    .read-link {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      gap: 12px;
+      min-height: 44px;
+      margin-top: 10px;
+      font-weight: 750;
+    }
 
+    /* 상세 경험 */
+    .experience-section {
+      padding: 56px 0 12px;
+      background: var(--surface);
+      border-block: 1px solid var(--line);
+    }
+
+    .section-heading {
+      margin-bottom: 36px;
+    }
+
+    .section-heading p {
+      max-width: 860px;
+      margin-top: 10px;
+      color: var(--muted);
+    }
+
+    .case {
+      display: grid;
+      grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+      gap: 52px;
+      padding: 40px 0 44px;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 24px;
+    }
+
+    .case-heading .case-number {
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-weight: 750;
+    }
+
+    .case-heading h3 {
+      font-size: 28px;
+    }
+
+    .case-heading .case-note {
+      margin-top: 16px;
+      color: var(--muted);
+    }
+
+    .sar {
+      min-width: 0;
+      display: grid;
+      gap: 24px;
+    }
+
+    .sar-row {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    .sar dt {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .sar dd {
+      min-width: 0;
+    }
+
+    .sar dd p + p {
+      margin-top: 12px;
+    }
+
+    .sar ul {
+      margin: 0;
+      padding-left: 1.25em;
+    }
+
+    .sar li + li {
+      margin-top: 9px;
+    }
+
+    .sar .result {
+      padding: 20px;
+      background: var(--tint);
+      border-radius: 8px;
+    }
+
+    .result strong {
+      color: var(--ink);
+      font-weight: 750;
+    }
+
+    /* 취향 */
+    .preferences {
+      padding-block: 60px;
+    }
+
+    .preference-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+    }
+
+    .preference {
+      padding-top: 20px;
+      border-top: 2px solid var(--accent);
+    }
+
+    .preference h3 {
+      margin-bottom: 12px;
+      font-size: 24px;
+    }
+
+    /* 소개 문장과 공개 범위 */
+    .closing {
+      padding-block: 48px;
+      background: var(--surface);
       border-top: 1px solid var(--line);
     }
 
-    .background-grid {
+    .closing-grid {
       display: grid;
-      grid-template-columns:
-        minmax(0, 0.85fr)
-        minmax(0, 1.15fr);
-
-      gap: 48px;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
     }
 
-    .background-section h2 {
-      font-size: clamp(27px, 2.5vw, 38px);
-      line-height: 1.35;
-      letter-spacing: -0.045em;
+    .closing h2 {
+      margin-bottom: 16px;
+      font-size: 28px;
     }
 
-    .background-section h2 span {
-      display: block;
-    }
-
-    .story {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.9;
-    }
-
-    .story p + p {
-      margin-top: 16px;
-    }
-
-    .story strong {
-      color: var(--ink);
-      font-weight: 700;
-    }
-
-    /* 공개 범위 */
-    .scope {
-      margin-block: 24px 32px;
-      padding: 24px;
-
-      border: 1px solid var(--line);
-      border-radius: 18px;
-    }
-
-    .scope h2 {
+    .closing h3 {
+      margin-bottom: 8px;
       font-size: 20px;
-      letter-spacing: -0.035em;
     }
 
-    .scope > p {
-      margin-top: 8px;
-
+    .purpose {
+      margin-bottom: 14px;
       color: var(--muted);
-      font-size: 14px;
+    }
+
+    .copy-button {
+      min-height: 48px;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .copy-button:hover {
+      background: #123968;
+      border-color: #123968;
+    }
+
+    .copy-button[aria-busy="true"] {
+      cursor: wait;
+    }
+
+    .copy-status {
+      min-height: 2em;
+      margin-top: 8px;
+      color: var(--accent);
     }
 
     .scope-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 24px;
-
-      margin-top: 18px;
     }
 
-    .scope h3 {
-      color: var(--green);
-      font-size: 14px;
+    .scope-grid ul {
+      margin: 0;
+      padding-left: 1.15em;
     }
 
-    .scope ul {
-      margin: 8px 0 0;
-      padding-left: 18px;
-
-      color: var(--muted);
-      font-size: 13px;
+    .scope-grid li + li {
+      margin-top: 8px;
     }
 
-    footer {
-      padding: 20px 0 28px;
-
+    /* 하단 */
+    .site-footer {
+      padding-block: 22px;
       border-top: 1px solid var(--line);
+    }
 
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px 24px;
+    }
+
+    .site-footer p {
       color: var(--muted);
-      font-size: 12px;
     }
 
-    /*
-      짧은 데스크톱 화면에서는
-      내용을 숨기지 않고 여백과 글자 크기를 조정합니다.
-    */
-    @media (min-width: 1021px) and (max-height: 820px) {
-      .overview {
-        padding-block: 20px;
-      }
-
-      .hero {
-        gap: 24px;
-      }
-
-      h1 {
-        font-size: 38px;
-      }
-
-      .intro-text {
-        margin-top: 12px;
-      }
-
-      .background-line {
-        margin-top: 10px;
-      }
-
-      .activity {
-        padding: 18px 20px;
-      }
-
-      .activity h2 {
-        margin-bottom: 12px;
-        font-size: 21px;
-      }
-
-      .activity-list {
-        gap: 11px;
-      }
-
-      .approach {
-        margin-top: 20px;
-      }
-
-      .approach-card {
-        padding: 16px;
-      }
-
-      .approach-card h3 {
-        font-size: 17px;
-      }
-
-      .approach-copy {
-        font-size: 13px;
-      }
+    .site-footer a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
     }
 
-    /* 브라우저 도구 모음으로 실제 페이지 높이가 더 짧은 경우 */
-    @media (min-width: 1021px) and (max-height: 700px) {
-      .nav {
-        min-height: 54px;
-      }
-
-      .overview {
-        padding-block: 14px;
-      }
-
-      h1 {
-        font-size: 32px;
-      }
-
-      .intro-text {
-        font-size: 14px;
-        line-height: 1.6;
-      }
-
-      .activity {
-        padding: 14px 18px;
-      }
-
-      .activity h2 {
+    /* 넓은 화면에서도 본문을 충분히 크게 표시 */
+    @media (min-width: 1600px) {
+      body {
         font-size: 20px;
       }
 
-      .activity-list {
-        gap: 9px;
+      .intro {
+        padding-block: 44px 36px;
       }
 
-      .approach {
-        margin-top: 14px;
+      .intro-copy p {
+        font-size: 22px;
       }
 
-      .section-head {
-        margin-bottom: 10px;
+      .intro-copy .background-line {
+        font-size: 20px;
       }
 
-      .section-head h2 {
-        font-size: 21px;
+      .strength-card {
+        padding: 26px;
       }
 
-      .approach-card {
-        padding: 13px 14px;
+      .strength-card h3 {
+        font-size: 28px;
       }
 
-      .approach-card h3 {
-        margin-bottom: 8px;
-        font-size: 16px;
+      .overview {
+        padding-bottom: 56px;
       }
 
-      .proof {
-        margin-top: 10px;
-        padding-top: 8px;
-        font-size: 12px;
+      .experience-section {
+        padding-top: 64px;
+      }
+    }
+
+    /* 높이가 낮은 데스크톱에서는 첫 화면의 세로 여백 조정 */
+    @media (min-width: 1051px) and (max-height: 820px) {
+      .intro {
+        padding-block: 26px 22px;
+        gap: 48px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      .strength-card {
+        padding: 20px;
       }
     }
 
     /* 태블릿 */
-    @media (max-width: 1020px) {
-      .shell {
-        width: calc(100% - 40px);
+    @media (max-width: 1050px) {
+      .wrap {
+        width: calc(100% - 48px);
       }
 
-      .hero,
-      .approach-grid,
-      .background-grid {
-        grid-template-columns: minmax(0, 1fr);
+      .intro {
+        gap: 32px;
       }
 
-      .hero {
-        gap: 24px;
+      .strength-grid {
+        grid-template-columns: 1fr;
       }
 
-      h1 {
-        font-size: clamp(32px, 5vw, 44px);
+      .strength-card h3 br {
+        display: none;
       }
 
-      .background-grid {
-        gap: 22px;
+      .strength-card .activity {
+        margin-bottom: 14px;
       }
 
-      .background-section {
-        margin-top: 28px;
+      .case {
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 32px;
+      }
+
+      .preference-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .closing-grid {
+        gap: 36px;
+      }
+
+      .scope-grid {
+        grid-template-columns: 1fr;
       }
     }
 
     /* 모바일 */
-    @media (max-width: 620px) {
-      .shell {
-        width: calc(100% - 32px);
+    @media (max-width: 720px) {
+      .wrap {
+        width: calc(100% - 36px);
       }
 
-      .nav {
-        gap: 12px;
+      .header-inner {
         flex-wrap: wrap;
-        padding-block: 4px;
-      }
-
-      .brand {
-        font-size: 11px;
-        gap: 7px;
+        gap: 4px 20px;
+        padding-block: 14px;
       }
 
       .nav-links {
-        gap: 14px;
+        gap: 8px 20px;
       }
 
-      .nav-links a {
-        font-size: 12px;
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding-block: 30px 28px;
       }
 
       h1 {
-        font-size: clamp(26px, 6.5vw, 36px);
+        font-size: clamp(32px, 6.4vw, 44px);
       }
 
-      .intro-text {
-        font-size: 14px;
+      h2 {
+        font-size: 28px;
       }
 
-      .background-line {
-        font-size: 12px;
+      .intro-copy p {
+        font-size: 20px;
       }
 
-      .activity {
-        padding: 20px;
+      .strength-card {
+        padding: 22px;
       }
 
-      .activity h2 {
-        font-size: 22px;
+      .strength-card h3 {
+        font-size: 25px;
       }
 
-      .activity-list > div {
-        grid-template-columns: 62px minmax(0, 1fr);
+      .overview {
+        padding-bottom: 36px;
       }
 
-      .section-head h2 {
-        font-size: 21px;
+      .experience-section {
+        padding-top: 40px;
       }
 
-      .scope {
-        padding: 20px;
+      .section-heading {
+        margin-bottom: 24px;
       }
 
-      .scope-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 20px;
+      .case {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding-block: 30px 36px;
+      }
+
+      .case-heading h3 {
+        font-size: 26px;
+      }
+
+      .case-heading .case-note {
+        margin-top: 10px;
+      }
+
+      .sar-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .sar .result {
+        padding: 18px;
+      }
+
+      .preferences {
+        padding-block: 40px;
+      }
+
+      .closing {
+        padding-block: 36px;
+      }
+
+      .closing-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
       }
     }
 
-    @media (forced-colors: active) {
-      a:focus-visible {
-        outline-color: Highlight;
+    /* 별도 버튼 없이 운영체제의 움직임 설정 존중 */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* 인쇄 */
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
+
+      .wrap {
+        width: 100%;
+      }
+
+      .site-header,
+      .skip-link,
+      .read-link,
+      .copy-button,
+      .copy-status,
+      .site-footer a {
+        display: none !important;
+      }
+
+      .intro,
+      .closing-grid,
+      .case {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .strength-grid,
+      .preference-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case,
+      .strength-card,
+      .preference {
+        break-inside: avoid;
       }
     }
   </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main">
-    본문으로 바로 이동
-  </a>
+  <a class="skip-link" href="#main">본문으로 바로 가기</a>
 
   <header class="site-header">
-    <nav class="shell nav" aria-label="주요 메뉴">
+    <div class="wrap header-inner">
       <a
         class="brand"
-        href="#intro"
+        href="#main"
         aria-label="박길수 소개로 이동"
       >
-        GILSU PARK
+        박길수
       </a>
 
-      <div class="nav-links">
-        <a href="#intro">소개</a>
-        <a href="#approach">접근 방식</a>
-        <a href="#background">배경</a>
-      </div>
-    </nav>
+      <nav class="nav-links" aria-label="주요 메뉴">
+        <a href="#strengths">일하는 방식</a>
+        <a href="#experience">경험과 근거</a>
+        <a href="#preferences">좋아하는 방식</a>
+      </nav>
+    </div>
   </header>
 
-  <main id="main" class="shell" tabindex="-1">
-    <div class="overview">
-      <div class="hero">
-        <section
-          id="intro"
-          class="intro"
-          aria-labelledby="intro-title"
-        >
-          <p class="eyebrow">01 / 박길수 소개</p>
-
+  <main id="main" tabindex="-1">
+    <div class="wrap">
+      <section class="intro" aria-labelledby="intro-title">
+        <div>
+          <p class="eyebrow">경험으로 소개하는 나</p>
           <h1 id="intro-title">
-            <span>문제의 맥락을 이해하고,</span>
-            <span class="accent">근거 있는 답을 찾습니다.</span>
+            문제를 살피고,<br>
+            경험을 연결합니다.
           </h1>
-
-          <p class="intro-text">
-            웹 개발자로 사용자 요청과 운영 문제를 다뤘고,
-            데이터사이언스 석사과정에서는 로그 데이터의 이상을
-            구분하는 방법을 연구했습니다.
-            두 경험을 통해, 현상을 이해하고 생각을 확인하는 과정을
-            중요하게 보게 되었습니다.
-          </p>
-
-          <p class="background-line">
-            웹 개발 경험 · 데이터사이언스 석사
-          </p>
-        </section>
-
-        <section
-          class="activity"
-          aria-labelledby="activity-title"
-        >
-          <p class="eyebrow">02 / 지금 관심을 두는 일</p>
-
-          <h2 id="activity-title">
-            이해에서 구현과 설명까지
-          </h2>
-
-          <dl class="activity-list">
-            <div>
-              <dt>원인 파악</dt>
-              <dd>
-                눈앞의 현상을 만든 조건과 과정을 살펴봅니다.
-              </dd>
-            </div>
-
-            <div>
-              <dt>구현·비교</dt>
-              <dd>
-                떠오른 생각을 직접 구현하고 결과를 비교합니다.
-              </dd>
-            </div>
-
-            <div>
-              <dt>설명·적용</dt>
-              <dd>
-                확인한 결과가 어떤 문제와 연결되는지 정리합니다.
-              </dd>
-            </div>
-          </dl>
-        </section>
-      </div>
-
-      <section
-        id="approach"
-        class="approach"
-        aria-labelledby="approach-title"
-      >
-        <div class="section-head">
-          <h2 id="approach-title">
-            경험에서 이어진 세 가지 태도
-          </h2>
-
-          <p>03 / 접근 방식과 경험 근거</p>
         </div>
 
-        <div class="approach-grid">
-          <article class="approach-card">
+        <div class="intro-copy">
+          <p>
+            문제가 생긴 조건을 확인하고, 사용자의 요청을 실제 변화로
+            옮깁니다. 새로운 것을 배울 때는 지금까지의 경험과 연결할
+            지점을 찾습니다.
+          </p>
+          <p class="background-line">
+            웹 개발 경험 · 데이터사이언스 석사 · 이상탐지 연구
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="overview"
+        id="strengths"
+        aria-labelledby="strengths-title"
+        tabindex="-1"
+      >
+        <h2 id="strengths-title">일하는 방식과 그 근거</h2>
+
+        <div class="strength-grid">
+          <article class="strength-card">
+            <p class="card-meta">01 · 이상탐지 연구</p>
+
             <h3>
-              <span class="number">01</span>
-              문제가 생긴 이유부터 살펴봅니다
+              조건과 근거를<br>
+              함께 확인합니다.
             </h3>
 
-            <p class="approach-copy">
-              화면에 드러난 증상만으로 판단하지 않고,
-              문제가 생긴 과정과 조건을 함께 살펴봅니다.
+            <p class="activity">
+              시간 정보와 그래프 관계를 바꾸며 로그 이상탐지 방법을
+              비교했습니다.
             </p>
 
             <p class="proof">
-              <strong>경험 근거</strong> ·
-              웹 개발에서 요청과 데이터 흐름을 따라 오류 원인을 확인하고,
-              수정 후 관련 기능을 점검했습니다.
+              <strong>근거</strong>데이터별 효과를 비교해, 공통으로 개선된
+              방법과 차이가 난 방법을 구분했습니다.
             </p>
+
+            <a class="read-link" href="#research">
+              연구 경험 읽기
+              <span aria-hidden="true">↓</span>
+            </a>
           </article>
 
-          <article class="approach-card">
+          <article class="strength-card">
+            <p class="card-meta">02 · 웹 시스템 유지보수</p>
+
             <h3>
-              <span class="number">02</span>
-              생각을 구현과 비교로 확인합니다
+              사용자의 요청을<br>
+              실제 변경으로 옮깁니다.
             </h3>
 
-            <p class="approach-copy">
-              떠오른 설명을 바로 결론으로 삼기보다,
-              직접 구현하고 결과를 비교해 판단할 근거를 마련합니다.
+            <p class="activity">
+              운영 웹 시스템에서 사용자 요청에 따라 화면과 처리 로직을
+              수정했습니다.
             </p>
 
             <p class="proof">
-              <strong>경험 근거</strong> ·
-              데이터사이언스 석사과정에서 로그 이상탐지 방법을 연구하고,
-              여러 접근을 비교했습니다.
+              <strong>근거</strong>요청을 화면·기능 변경으로 반영하고,
+              관련 기능의 수정 영향 범위를 확인했습니다.
             </p>
+
+            <a class="read-link" href="#development">
+              개발 경험 읽기
+              <span aria-hidden="true">↓</span>
+            </a>
           </article>
 
-          <article class="approach-card">
+          <article class="strength-card">
+            <p class="card-meta">03 · 보안 프로젝트 설계</p>
+
             <h3>
-              <span class="number">03</span>
-              기술이 쓰이는 맥락을 생각합니다
+              경험을 연결해<br>
+              다음 방향을 찾습니다.
             </h3>
 
-            <p class="approach-copy">
-              기능이나 분석 결과가 누구에게 필요하고,
-              어떤 문제를 줄이는지까지 생각하려 합니다.
+            <p class="activity">
+              웹 개발·연구 경험을 보안 학습과 연결해 프로젝트 방향을
+              정리했습니다.
             </p>
 
             <p class="proof">
-              <strong>경험 근거</strong> ·
-              사용자 요청을 화면과 기능에 반영한 경험을 바탕으로,
-              기술을 실제 사용 맥락과 연결해 봅니다.
+              <strong>근거</strong>탐지부터 API·저장·조회 화면까지
+              이어지는 구성을 설계했습니다.
             </p>
+
+            <a class="read-link" href="#direction">
+              설계 경험 읽기
+              <span aria-hidden="true">↓</span>
+            </a>
           </article>
         </div>
       </section>
     </div>
 
     <section
-      id="background"
-      class="background-section"
-      aria-labelledby="background-title"
+      class="experience-section"
+      id="experience"
+      aria-labelledby="experience-title"
+      tabindex="-1"
     >
-      <div class="background-grid">
-        <div>
-          <p class="eyebrow">
-            BACKGROUND / 두 경험이 이어진 지점
-          </p>
-
-          <h2 id="background-title">
-            <span>기능이 작동하는 이유에서,</span>
-            <span>데이터가 말하는 이유까지.</span>
+      <div class="wrap">
+        <div class="section-heading">
+          <h2 id="experience-title">
+            어떤 상황에서, 어떻게 일했는지
           </h2>
-        </div>
-
-        <div class="story">
           <p>
-            <strong>
-              웹 개발에서는 실제로 사용되는 서비스를 다뤘습니다.
-            </strong>
-            사용자 요청을 화면과 기능에 반영하고,
-            운영 중 발생한 문제의 원인을 확인했습니다.
-            한 부분을 고치는 일이 다른 기능에 어떤 영향을 주는지도
-            함께 살펴야 했습니다.
-          </p>
-
-          <p>
-            <strong>
-              데이터사이언스를 공부하며 질문의 대상이 넓어졌습니다.
-            </strong>
-            어떤 데이터를 정상으로 볼지,
-            이상이라고 판단할 근거는 무엇인지 살펴보고,
-            서로 다른 방법을 구현해 결과를 비교했습니다.
-            결과의 차이를 확인하고 그 이유를 살펴보는 과정이 중요했습니다.
-          </p>
-
-          <p>
-            두 경험을 연결하는 기준은 같습니다.
-            <strong>
-              상황을 먼저 이해하고, 생각을 구현과 비교로 확인하며,
-              결과가 어떤 문제를 설명하는지 정리하는 것.
-            </strong>
-            앞으로도 개발과 분석을 함께 활용해 실제 문제를 다루고 싶습니다.
+            연구와 개발, 프로젝트의 방향을 정하는 과정에서
+            제가 다룬 문제와 행동을 정리했습니다.
           </p>
         </div>
+
+        <article
+          class="case"
+          id="research"
+          aria-labelledby="research-title"
+          tabindex="-1"
+        >
+          <div class="case-heading">
+            <p class="case-number">01 · 연구 경험</p>
+            <h3 id="research-title">
+              결과가 나온 조건까지 확인합니다.
+            </h3>
+            <p class="case-note">
+              로그 이상탐지 방법 비교
+            </p>
+          </div>
+
+          <dl class="sar">
+            <div class="sar-row">
+              <dt>상황</dt>
+              <dd>
+                <p>
+                  로그 이상탐지 연구에서 기존 그래프 구조에 시간 정보를
+                  반영하는 방법을 다뤘습니다. 같은 종류의 로그라도
+                  가까운 시간에 연속으로 발생한 경우와 한참 뒤에
+                  발생한 경우에는 차이가 있을 수 있다고 보았습니다.
+                </p>
+                <p>
+                  시간 간격을 반영하거나, 짧은 시간에 로그가 몰리는
+                  정도를 활용하거나, 일부 관계만 남기는 방법이
+                  있었습니다. 각 방법이 어떤 데이터에서 효과적인지
+                  확인할 필요가 있었습니다.
+                </p>
+              </dd>
+            </div>
+
+            <div class="sar-row">
+              <dt>행동</dt>
+              <dd>
+                <ul>
+                  <li>
+                    기존 방법을 비교 기준으로 두고 시간 가중치,
+                    로그의 발생 집중도, 그래프 관계를 선택하는
+                    방식을 적용했습니다.
+                  </li>
+                  <li>
+                    서로 다른 로그 데이터에서 방법별 결과를 비교해,
+                    특정 데이터에서 나타나는 효과와 공통으로 나타나는
+                    개선을 살펴봤습니다.
+                  </li>
+                  <li>
+                    각 방법을 개별적으로 적용한 결과와 여러 방법을
+                    함께 적용한 결과도 확인했습니다.
+                  </li>
+                </ul>
+              </dd>
+            </div>
+
+            <div class="sar-row result">
+              <dt>결과</dt>
+              <dd>
+                <p>
+                  <strong>
+                    시간 가중치를 적용한 방법에서는 여러 데이터셋에
+                    걸쳐 개선을 확인했습니다.
+                  </strong>
+                  발생 집중도를 반영하거나 일부 관계를 선택하는 방법은
+                  데이터에 따라 효과가 달랐고, 여러 방법의 결합이
+                  항상 더 좋은 결과를 만들지는 않았습니다.
+                </p>
+                <p>
+                  이를 통해 어떤 방법이 좋았는지와 함께,
+                  그 효과가 나타난 조건을 구분해 설명할 수 있었습니다.
+                </p>
+              </dd>
+            </div>
+          </dl>
+        </article>
+
+        <article
+          class="case"
+          id="development"
+          aria-labelledby="development-title"
+          tabindex="-1"
+        >
+          <div class="case-heading">
+            <p class="case-number">02 · 개발 경험</p>
+            <h3 id="development-title">
+              요청을 실제 화면과 기능에 반영합니다.
+            </h3>
+            <p class="case-note">
+              사용 중인 웹 시스템 유지보수
+            </p>
+          </div>
+
+          <dl class="sar">
+            <div class="sar-row">
+              <dt>상황</dt>
+              <dd>
+                <p>
+                  운영 중인 웹 시스템에서 사용자 요청에 따라
+                  화면과 기능을 수정하고, 발생한 오류를 확인하는
+                  업무를 맡았습니다.
+                </p>
+                <p>
+                  화면에서 보이는 동작은 내부의 조회와 데이터 처리에
+                  연결되어 있었습니다. 요청받은 부분을 변경하면서
+                  관련 기능에 어떤 영향을 주는지도 함께
+                  확인해야 했습니다.
+                </p>
+              </dd>
+            </div>
+
+            <div class="sar-row">
+              <dt>행동</dt>
+              <dd>
+                <ul>
+                  <li>
+                    사용자 요청을 바탕으로 화면 구성과
+                    애플리케이션의 처리 로직을 수정했습니다.
+                  </li>
+                  <li>
+                    화면에 필요한 정보를 조회하고 처리하는 SQL과
+                    데이터 흐름을 다뤘습니다.
+                  </li>
+                  <li>
+                    운영 중 문제가 발생하면 요청 흐름과
+                    애플리케이션 로그를 살펴보며 원인을 추적했습니다.
+                  </li>
+                  <li>
+                    수정한 부분과 연결된 기능을 확인해
+                    변경의 영향 범위를 점검했습니다.
+                  </li>
+                </ul>
+              </dd>
+            </div>
+
+            <div class="sar-row result">
+              <dt>결과</dt>
+              <dd>
+                <p>
+                  <strong>
+                    사용자 요청을 운영 시스템의 화면과 기능 변경으로
+                    반영했습니다.
+                  </strong>
+                  화면의 동작과 내부 데이터 처리를 함께 다루며,
+                  수정 내용과 관련 기능의 영향을 확인하는
+                  유지보수 경험을 쌓았습니다.
+                </p>
+              </dd>
+            </div>
+          </dl>
+        </article>
+
+        <article
+          class="case"
+          id="direction"
+          aria-labelledby="direction-title"
+          tabindex="-1"
+        >
+          <div class="case-heading">
+            <p class="case-number">03 · 방향 설정과 설계</p>
+            <h3 id="direction-title">
+              배운 것을 연결해 다음 작업을 구체화합니다.
+            </h3>
+            <p class="case-note">
+              보안 프로젝트의 방향과 구조 설계
+            </p>
+          </div>
+
+          <dl class="sar">
+            <div class="sar-row">
+              <dt>상황</dt>
+              <dd>
+                <p>
+                  웹 개발과 로그 이상탐지 연구를 경험한 뒤,
+                  네트워크 보안 강의를 들으며 현재의 학습을
+                  앞으로의 직무 준비에 활용할 방법을 고민했습니다.
+                </p>
+                <p>
+                  개발·연구·보안 학습이 한 프로젝트 안에서
+                  각각 어떤 역할을 할 수 있는지 정리할 필요가
+                  있었습니다.
+                </p>
+              </dd>
+            </div>
+
+            <div class="sar-row">
+              <dt>행동</dt>
+              <dd>
+                <ul>
+                  <li>
+                    보안 강의의 내용을 활용할 수 있도록
+                    네트워크 흐름에서 이상 징후를 찾는 문제를
+                    프로젝트 방향으로 잡았습니다.
+                  </li>
+                  <li>
+                    규칙 기반 탐지와 머신러닝·딥러닝 방법을 비교하는
+                    구성을 계획했습니다.
+                  </li>
+                  <li>
+                    탐지 이후의 과정도 포함해 API, 결과 저장,
+                    조회 화면으로 이어지는 구조를 구상했습니다.
+                  </li>
+                  <li>
+                    진행 중인 계획에 현재의 학습과 목표를 반영하도록
+                    프로젝트 방향을 조정했습니다.
+                  </li>
+                </ul>
+              </dd>
+            </div>
+
+            <div class="sar-row result">
+              <dt>결과</dt>
+              <dd>
+                <p>
+                  <strong>
+                    탐지 대상, 비교할 방법, 결과를 저장하고 조회하는
+                    역할을 구분한 프로젝트 구성을 정리했습니다.
+                  </strong>
+                  연구 경험은 탐지와 비교 실험에, 웹 개발 경험은
+                  결과를 전달하고 확인하는 기능에 연결했습니다.
+                </p>
+                <p>
+                  여기서 소개하는 경험의 범위는 프로젝트의
+                  방향 설정과 구조 설계입니다.
+                </p>
+              </dd>
+            </div>
+          </dl>
+        </article>
       </div>
     </section>
 
     <section
-      class="scope"
-      aria-labelledby="scope-title"
+      class="preferences wrap"
+      id="preferences"
+      aria-labelledby="preferences-title"
+      tabindex="-1"
     >
-      <h2 id="scope-title">이 페이지에 담은 범위</h2>
+      <div class="section-heading">
+        <h2 id="preferences-title">
+          이런 방식을 좋아합니다.
+        </h2>
+        <p>
+          일을 선택하고, 새로운 것을 배우고, 사람과 대화할 때
+          중요하게 생각하는 것들입니다.
+        </p>
+      </div>
 
-      <p>
-        나를 처음 만나는 사람에게 간단한 배경과 관심사,
-        문제를 다루는 방식을 소개합니다.
-      </p>
+      <div class="preference-grid">
+        <article class="preference">
+          <h3>이유가 납득되는 일</h3>
+          <p>
+            무엇을 위한 일인지 이해될 때 더 관심이 갑니다.
+            배우거나 만드는 일이 제 경험과 어떻게 이어지고,
+            누구에게 어떤 도움이 되는지 알고 싶습니다.
+          </p>
+        </article>
 
-      <div class="scope-grid">
+        <article class="preference">
+          <h3>과정이 보이는 설명</h3>
+          <p>
+            결론에 도달한 과정도 알고 싶습니다.
+            원리와 순서가 드러나는 설명,
+            직접 따라가며 확인할 수 있는 예시를 선호합니다.
+          </p>
+        </article>
+
+        <article class="preference">
+          <h3>차분하게 이어지는 대화</h3>
+          <p>
+            상대와 맥락이 잡힌 상태에서 대화를 이어가는 편이
+            편합니다. 생각을 정리해 말하고,
+            상대의 이야기도 충분히 이해할 수 있는 자리를 좋아합니다.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="wrap closing-grid">
         <div>
-          <h3>공개하는 내용</h3>
+          <h2 id="closing-title">함께 일할 분들께</h2>
 
-          <ul>
-            <li>개발과 학업에 관한 간단한 배경</li>
-            <li>공개 가능한 업무·연구 경험</li>
-            <li>관심사와 문제를 다루는 기준</li>
-          </ul>
+          <p class="purpose">
+            이 페이지는 함께 일할 분들에게 제가 어떤 경험을 바탕으로
+            판단하고 행동하는지 소개하기 위해 만들었습니다.
+          </p>
+
+          <p id="share-intro">웹 개발과 데이터사이언스 연구를 바탕으로, 문제의 조건과 사용자의 요구를 살피고 경험을 연결해 방향을 찾는 박길수입니다.</p>
+
+          <button
+            class="copy-button"
+            id="copy-intro"
+            type="button"
+            aria-describedby="copy-status"
+            hidden
+          >
+            소개 문장 복사
+          </button>
+
+          <p
+            class="copy-status"
+            id="copy-status"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          ></p>
         </div>
 
         <div>
-          <h3>공개하지 않는 내용</h3>
+          <h2>이 페이지의 공개 범위</h2>
 
-          <ul>
-            <li>연락처·주소 등 불필요한 개인정보</li>
-            <li>회사 내부 자료와 사적인 기록</li>
-            <li>계정 정보와 비밀값</li>
-          </ul>
+          <div class="scope-grid">
+            <div>
+              <h3>공개하는 내용</h3>
+              <ul>
+                <li>간단한 소개와 관심 분야</li>
+                <li>개발·연구 경험과 맡은 역할</li>
+                <li>일하는 방식과 선호</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3>공개하지 않는 내용</h3>
+              <ul>
+                <li>개인 연락처와 생활 정보</li>
+                <li>회사 내부 자료와 고객 정보</li>
+                <li>계정·서버 접속 정보</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="shell">
-    © 2026 Gilsu Park. 이해하고, 확인하고, 연결합니다.
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>박길수 · 경험과 일하는 방식을 담은 개인 페이지</p>
+      <a href="#main">처음으로 돌아가기 ↑</a>
+    </div>
   </footer>
+
+  <script>
+    (() => {
+      const button = document.getElementById("copy-intro");
+      const intro = document.getElementById("share-intro");
+      const status = document.getElementById("copy-status");
+
+      if (!button || !intro || !status) return;
+
+      let copying = false;
+
+      // 스크립트가 실행될 때만 복사 버튼을 표시합니다.
+      button.hidden = false;
+
+      button.addEventListener("click", async () => {
+        if (copying) return;
+
+        copying = true;
+        status.textContent = "";
+        button.setAttribute("aria-busy", "true");
+
+        try {
+          if (!navigator.clipboard || !window.isSecureContext) {
+            throw new Error("clipboard unavailable");
+          }
+
+          await navigator.clipboard.writeText(
+            intro.textContent.trim()
+          );
+
+          status.textContent =
+            "소개 문장을 복사했습니다. 원하는 곳에 붙여 넣으세요.";
+        } catch {
+          // 자동 복사가 제한되면 직접 복사할 수 있도록 문장을 선택합니다.
+          const selection = window.getSelection();
+
+          if (selection) {
+            const range = document.createRange();
+            range.selectNodeContents(intro);
+
+            selection.removeAllRanges();
+            selection.addRange(range);
+          }
+
+          status.textContent =
+            "자동 복사가 되지 않았습니다. 위 소개 문장을 선택해 직접 복사해 주세요.";
+        } finally {
+          copying = false;
+          button.removeAttribute("aria-busy");
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
