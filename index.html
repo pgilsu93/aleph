@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <meta
     name="description"
-    content="박길수의 개인 소개. 간단한 배경과 관심사, 신중하게 살피고 사람과 의미를 생각하는 태도를 소개합니다."
+    content="웹 개발 경험과 데이터사이언스 석사 배경을 바탕으로, 문제의 맥락을 이해하고 근거 있는 답을 찾아가는 박길수의 개인 소개입니다."
   >
+
   <meta name="theme-color" content="#f7f5ef">
 
   <link
@@ -14,18 +16,21 @@
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23245c49'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23f7f5ef'/%3E%3C/svg%3E"
   >
 
-  <title>박길수 — 신중하게 살피고, 의미를 찾는 사람</title>
+  <title>박길수 — 문제를 이해하고, 근거 있는 답을 찾습니다</title>
 
   <style>
     :root {
       color-scheme: light;
+
       --paper: #f7f5ef;
       --card: #fffefd;
       --soft: #eaf0e9;
+
       --ink: #1f2925;
       --muted: #4f5f56;
       --green: #245c49;
       --brown: #874b31;
+
       --line: #d7dfd6;
       --focus: #20543f;
     }
@@ -36,10 +41,6 @@
       box-sizing: border-box;
     }
 
-    [hidden] {
-      display: none !important;
-    }
-
     html {
       scroll-behavior: auto;
       scroll-padding-top: 20px;
@@ -47,14 +48,16 @@
 
     body {
       margin: 0;
-      background: var(--paper);
       color: var(--ink);
+      background: var(--paper);
+
       font-family:
         "Pretendard",
         "Apple SD Gothic Neo",
         "Malgun Gothic",
         system-ui,
         sans-serif;
+
       line-height: 1.65;
       word-break: keep-all;
       overflow-wrap: anywhere;
@@ -69,37 +72,15 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
-    }
-
-    a, button, summary {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    a:focus-visible,
-    button:focus-visible,
-    summary:focus-visible {
+    a:focus-visible {
       outline: 3px solid var(--focus);
       outline-offset: 4px;
-      border-radius: 6px;
+      border-radius: 5px;
     }
 
     .shell {
       width: min(1480px, calc(100% - 64px));
       margin-inline: auto;
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip-path: inset(50%);
-      white-space: nowrap;
-      border: 0;
     }
 
     /* 키보드 이용자를 위한 본문 바로가기 */
@@ -108,10 +89,13 @@
       top: 12px;
       left: 16px;
       z-index: 100;
+
       padding: 10px 16px;
       border-radius: 8px;
+
       color: #fff;
       background: var(--ink);
+
       transform: translateY(-180%);
     }
 
@@ -125,44 +109,49 @@
     }
 
     .nav {
-      min-height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+
+      min-height: 60px;
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding-block: 10px;
+
+      min-height: 44px;
+
       font-size: 13px;
       font-weight: 800;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       white-space: nowrap;
     }
 
     .brand::before {
       content: "";
+
       width: 10px;
       height: 10px;
       border-radius: 50%;
+
       background: var(--green);
     }
 
-    .nav-actions,
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 20px;
     }
 
     .nav-links a {
       display: inline-flex;
       align-items: center;
+
       min-height: 44px;
-      padding-inline: 8px;
+
       color: var(--muted);
       font-size: 13px;
     }
@@ -172,54 +161,27 @@
       text-decoration: underline;
     }
 
-    .motion-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 44px;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--green);
-      background: var(--card);
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .motion-button[aria-pressed="true"] {
-      background: var(--soft);
-    }
-
-    .motion-state {
-      min-width: 28px;
-      color: var(--ink);
-      font-size: 11px;
-    }
-
     /*
-      첫 화면
-      위쪽: 소개 + 활동
-      바로 아래: 세 가지 태도 + 짧은 경험 근거
-
-      화면 높이를 강제로 채우거나 내용을 잘라 숨기지 않습니다.
+      소개·활동·경험 근거를 모두 페이지 상단에 배치합니다.
+      내용을 접거나 가려서 화면 높이를 맞추지 않습니다.
     */
     .overview {
-      padding-block: 28px 24px;
+      padding-block: 26px 24px;
     }
 
     .hero {
       display: grid;
       grid-template-columns:
-        minmax(0, 1.15fr)
-        minmax(0, 0.85fr);
+        minmax(0, 1.2fr)
+        minmax(0, 0.8fr);
+
       align-items: stretch;
       gap: 28px;
     }
 
     .hero > *,
-    .strength-grid > * {
+    .approach-grid > *,
+    .background-grid > * {
       min-width: 0;
     }
 
@@ -229,17 +191,18 @@
 
     .eyebrow {
       margin-bottom: 10px;
+
       color: var(--green);
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
     }
 
     h1 {
-      font-size: clamp(36px, 3.15vw, 54px);
-      font-weight: 800;
+      font-size: clamp(34px, 3.1vw, 52px);
       line-height: 1.22;
       letter-spacing: -0.055em;
+      font-weight: 800;
     }
 
     h1 span {
@@ -251,37 +214,50 @@
     }
 
     .intro-text {
-      max-width: 670px;
-      margin-top: 16px;
+      max-width: 740px;
+      margin-top: 14px;
+
       color: var(--muted);
       font-size: 15px;
       line-height: 1.75;
     }
 
-    /* 현재 활동 */
+    .background-line {
+      margin-top: 14px;
+
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* 관심과 활동 */
     .activity {
-      padding: 22px;
+      padding: 20px 22px;
+
       border: 1px solid var(--line);
       border-radius: 20px;
+
       background: var(--soft);
     }
 
     .activity h2 {
-      margin-bottom: 16px;
-      font-size: 24px;
+      margin-bottom: 15px;
+
+      font-size: 23px;
       line-height: 1.35;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.035em;
     }
 
     .activity-list {
       display: grid;
-      gap: 14px;
+      gap: 13px;
     }
 
     .activity-list > div {
       display: grid;
-      grid-template-columns: 58px minmax(0, 1fr);
-      gap: 12px;
+      grid-template-columns: 68px minmax(0, 1fr);
+      gap: 10px;
+
       align-items: start;
     }
 
@@ -296,8 +272,8 @@
       font-size: 13px;
     }
 
-    /* 태도와 경험 근거 */
-    .evidence {
+    /* 접근 방식과 경험 근거 */
+    .approach {
       margin-top: 24px;
     }
 
@@ -306,6 +282,7 @@
       justify-content: space-between;
       align-items: baseline;
       flex-wrap: wrap;
+
       gap: 8px 16px;
       margin-bottom: 12px;
     }
@@ -321,42 +298,50 @@
       font-size: 12px;
     }
 
-    .strength-grid {
+    .approach-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
-      align-items: start;
+
+      align-items: stretch;
     }
 
-    .strength-card {
+    .approach-card {
       padding: 18px;
+
       border: 1px solid var(--line);
       border-radius: 18px;
+
       background: var(--card);
     }
 
-    .strength-card h3 {
-      margin-bottom: 8px;
+    .approach-card h3 {
+      margin-bottom: 10px;
+
       font-size: 18px;
       line-height: 1.4;
-      letter-spacing: -0.035em;
+      letter-spacing: -0.04em;
     }
 
     .number {
       margin-right: 7px;
+
       color: var(--brown);
       font-size: 12px;
     }
 
-    .strength-copy {
+    .approach-copy {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .proof {
-      margin-top: 10px;
-      color: var(--ink);
+      margin-top: 12px;
+      padding-top: 10px;
+
+      border-top: 1px solid var(--line);
+
       font-size: 13px;
       line-height: 1.6;
     }
@@ -365,58 +350,65 @@
       color: var(--green);
     }
 
-    /* 짧은 근거는 항상 보이고, 긴 설명만 펼칩니다. */
-    details {
-      margin-top: 12px;
+    /* 첫 화면 내용을 보충하는 배경 설명 */
+    .background-section {
+      margin-top: 42px;
+      padding-block: 32px;
+
       border-top: 1px solid var(--line);
     }
 
-    summary {
-      min-height: 44px;
-      padding-block: 11px 8px;
-      color: var(--green);
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    summary:hover {
-      text-decoration: underline;
-    }
-
-    .sar {
+    .background-grid {
       display: grid;
-      gap: 12px;
-      padding-block: 8px 4px;
-      font-size: 13px;
+      grid-template-columns:
+        minmax(0, 0.85fr)
+        minmax(0, 1.15fr);
+
+      gap: 48px;
     }
 
-    .sar dt {
-      margin-bottom: 3px;
-      color: var(--green);
-      font-weight: 800;
+    .background-section h2 {
+      font-size: clamp(27px, 2.5vw, 38px);
+      line-height: 1.35;
+      letter-spacing: -0.045em;
     }
 
-    .sar dd {
+    .background-section h2 span {
+      display: block;
+    }
+
+    .story {
       color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .story p + p {
+      margin-top: 16px;
+    }
+
+    .story strong {
+      color: var(--ink);
+      font-weight: 700;
     }
 
     /* 공개 범위 */
     .scope {
-      margin-top: 52px;
-      margin-bottom: 32px;
+      margin-block: 24px 32px;
       padding: 24px;
+
       border: 1px solid var(--line);
-      border-radius: 20px;
+      border-radius: 18px;
     }
 
     .scope h2 {
-      font-size: 21px;
+      font-size: 20px;
       letter-spacing: -0.035em;
     }
 
     .scope > p {
       margin-top: 8px;
+
       color: var(--muted);
       font-size: 14px;
     }
@@ -425,29 +417,36 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
-      margin-top: 20px;
+
+      margin-top: 18px;
     }
 
     .scope h3 {
-      font-size: 14px;
       color: var(--green);
+      font-size: 14px;
     }
 
     .scope ul {
       margin: 8px 0 0;
       padding-left: 18px;
+
       color: var(--muted);
       font-size: 13px;
     }
 
     footer {
       padding: 20px 0 28px;
+
       border-top: 1px solid var(--line);
+
       color: var(--muted);
       font-size: 12px;
     }
 
-    /* 세로가 짧은 데스크톱에서는 간격을 줄입니다. */
+    /*
+      짧은 데스크톱 화면에서는
+      내용을 숨기지 않고 여백과 글자 크기를 조정합니다.
+    */
     @media (min-width: 1021px) and (max-height: 820px) {
       .overview {
         padding-block: 20px;
@@ -458,11 +457,15 @@
       }
 
       h1 {
-        font-size: 40px;
+        font-size: 38px;
       }
 
       .intro-text {
         margin-top: 12px;
+      }
+
+      .background-line {
+        margin-top: 10px;
       }
 
       .activity {
@@ -470,43 +473,43 @@
       }
 
       .activity h2 {
-        font-size: 22px;
         margin-bottom: 12px;
+        font-size: 21px;
       }
 
       .activity-list {
-        gap: 12px;
+        gap: 11px;
       }
 
-      .evidence {
+      .approach {
         margin-top: 20px;
       }
 
-      .strength-card {
-        padding: 15px 16px;
+      .approach-card {
+        padding: 16px;
       }
 
-      .strength-card h3 {
+      .approach-card h3 {
         font-size: 17px;
+      }
+
+      .approach-copy {
+        font-size: 13px;
       }
     }
 
-    /* 브라우저 도구 모음으로 실제 높이가 더 짧아진 경우 */
+    /* 브라우저 도구 모음으로 실제 페이지 높이가 더 짧은 경우 */
     @media (min-width: 1021px) and (max-height: 700px) {
       .nav {
-        min-height: 56px;
+        min-height: 54px;
       }
 
       .overview {
         padding-block: 14px;
       }
 
-      .hero {
-        gap: 20px;
-      }
-
       h1 {
-        font-size: 34px;
+        font-size: 32px;
       }
 
       .intro-text {
@@ -520,14 +523,13 @@
 
       .activity h2 {
         font-size: 20px;
-        margin-bottom: 10px;
       }
 
       .activity-list {
-        gap: 10px;
+        gap: 9px;
       }
 
-      .evidence {
+      .approach {
         margin-top: 14px;
       }
 
@@ -539,26 +541,19 @@
         font-size: 21px;
       }
 
-      .strength-card {
-        padding: 12px 14px;
+      .approach-card {
+        padding: 13px 14px;
       }
 
-      .strength-card h3 {
-        margin-bottom: 6px;
+      .approach-card h3 {
+        margin-bottom: 8px;
         font-size: 16px;
       }
 
-      .strength-copy {
-        font-size: 13px;
-      }
-
       .proof {
-        margin-top: 8px;
+        margin-top: 10px;
+        padding-top: 8px;
         font-size: 12px;
-      }
-
-      details {
-        margin-top: 8px;
       }
     }
 
@@ -568,29 +563,26 @@
         width: calc(100% - 40px);
       }
 
-      .hero {
+      .hero,
+      .approach-grid,
+      .background-grid {
         grid-template-columns: minmax(0, 1fr);
-        gap: 24px;
       }
 
-      .strength-grid {
-        grid-template-columns: minmax(0, 1fr);
+      .hero {
+        gap: 24px;
       }
 
       h1 {
         font-size: clamp(32px, 5vw, 44px);
       }
 
-      .activity {
-        padding: 22px;
+      .background-grid {
+        gap: 22px;
       }
 
-      .evidence {
+      .background-section {
         margin-top: 28px;
-      }
-
-      .scope {
-        margin-top: 30px;
       }
     }
 
@@ -601,15 +593,9 @@
       }
 
       .nav {
-        gap: 10px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .nav-actions {
-        gap: 0;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding-block: 4px;
       }
 
       .brand {
@@ -617,31 +603,40 @@
         gap: 7px;
       }
 
-      .motion-button {
-        padding-inline: 9px;
-        gap: 5px;
-        font-size: 11px;
+      .nav-links {
+        gap: 14px;
       }
 
-      .overview {
-        padding-top: 24px;
+      .nav-links a {
+        font-size: 12px;
       }
 
       h1 {
-        font-size: clamp(27px, 6.5vw, 37px);
+        font-size: clamp(26px, 6.5vw, 36px);
       }
 
       .intro-text {
         font-size: 14px;
       }
 
+      .background-line {
+        font-size: 12px;
+      }
+
+      .activity {
+        padding: 20px;
+      }
+
+      .activity h2 {
+        font-size: 22px;
+      }
+
       .activity-list > div {
-        grid-template-columns: 48px minmax(0, 1fr);
-        gap: 10px;
+        grid-template-columns: 62px minmax(0, 1fr);
       }
 
       .section-head h2 {
-        font-size: 22px;
+        font-size: 21px;
       }
 
       .scope {
@@ -654,37 +649,8 @@
       }
     }
 
-    /*
-      JavaScript가 없으면 기본적으로 움직임 없이 작동합니다.
-      경험 펼치기는 JavaScript 없이도 사용할 수 있습니다.
-    */
-    html[data-motion="full"] {
-      scroll-behavior: smooth;
-    }
-
-    html[data-motion="reduce"],
-    html[data-motion="reduce"] * {
-      scroll-behavior: auto !important;
-    }
-
-    html[data-motion="reduce"] *,
-    html[data-motion="reduce"] *::before,
-    html[data-motion="reduce"] *::after {
-      animation: none !important;
-      transition: none !important;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html:not([data-motion="full"]),
-      html:not([data-motion="full"]) * {
-        scroll-behavior: auto !important;
-      }
-    }
-
     @media (forced-colors: active) {
-      a:focus-visible,
-      button:focus-visible,
-      summary:focus-visible {
+      a:focus-visible {
         outline-color: Highlight;
       }
     }
@@ -706,29 +672,10 @@
         GILSU PARK
       </a>
 
-      <div class="nav-actions">
-        <div class="nav-links">
-          <a href="#intro">소개</a>
-          <a href="#activity">활동</a>
-          <a href="#evidence">근거</a>
-        </div>
-
-        <button
-          id="motion-button"
-          class="motion-button"
-          type="button"
-          aria-pressed="false"
-          hidden
-        >
-          <span>움직임 줄이기</span>
-          <span
-            id="motion-state"
-            class="motion-state"
-            aria-hidden="true"
-          >
-            꺼짐
-          </span>
-        </button>
+      <div class="nav-links">
+        <a href="#intro">소개</a>
+        <a href="#approach">접근 방식</a>
+        <a href="#background">배경</a>
       </div>
     </nav>
   </header>
@@ -736,7 +683,6 @@
   <main id="main" class="shell" tabindex="-1">
     <div class="overview">
       <div class="hero">
-        <!-- 소개 -->
         <section
           id="intro"
           class="intro"
@@ -745,234 +691,208 @@
           <p class="eyebrow">01 / 박길수 소개</p>
 
           <h1 id="intro-title">
-            <span>신중하게 살피고,</span>
-            <span class="accent">사람과 의미를 생각합니다.</span>
+            <span>문제의 맥락을 이해하고,</span>
+            <span class="accent">근거 있는 답을 찾습니다.</span>
           </h1>
 
           <p class="intro-text">
-            웹 개발을 경험하고 데이터사이언스를 공부했습니다.<br>
-            무엇을 만드는지만큼, 그 과정이 사람에게 어떤 의미인지도
-            생각하려 합니다.
+            웹 개발자로 사용자 요청과 운영 문제를 다뤘고,
+            데이터사이언스 석사과정에서는 로그 데이터의 이상을
+            구분하는 방법을 연구했습니다.
+            두 경험을 통해, 현상을 이해하고 생각을 확인하는 과정을
+            중요하게 보게 되었습니다.
+          </p>
+
+          <p class="background-line">
+            웹 개발 경험 · 데이터사이언스 석사
           </p>
         </section>
 
-        <!-- 활동 -->
         <section
-          id="activity"
           class="activity"
           aria-labelledby="activity-title"
         >
-          <p class="eyebrow">02 / 요즘의 활동</p>
+          <p class="eyebrow">02 / 지금 관심을 두는 일</p>
 
           <h2 id="activity-title">
-            만들고, 배우고, 돌아봅니다.
+            이해에서 구현과 설명까지
           </h2>
 
           <dl class="activity-list">
             <div>
-              <dt>만들기</dt>
-              <dd>생각과 관심사를 작은 결과물로 옮겨 봅니다.</dd>
+              <dt>원인 파악</dt>
+              <dd>
+                눈앞의 현상을 만든 조건과 과정을 살펴봅니다.
+              </dd>
             </div>
 
             <div>
-              <dt>배우기</dt>
-              <dd>결과만 보기보다 어떻게 작동하는지 알아봅니다.</dd>
+              <dt>구현·비교</dt>
+              <dd>
+                떠오른 생각을 직접 구현하고 결과를 비교합니다.
+              </dd>
             </div>
 
             <div>
-              <dt>돌아보기</dt>
-              <dd>나를 설명하는 말이 실제 경험과 맞는지 살펴봅니다.</dd>
+              <dt>설명·적용</dt>
+              <dd>
+                확인한 결과가 어떤 문제와 연결되는지 정리합니다.
+              </dd>
             </div>
           </dl>
         </section>
       </div>
 
-      <!-- 핵심 근거는 펼치지 않아도 첫 화면에서 읽을 수 있습니다. -->
       <section
-        id="evidence"
-        class="evidence"
-        aria-labelledby="evidence-title"
+        id="approach"
+        class="approach"
+        aria-labelledby="approach-title"
       >
         <div class="section-head">
-          <h2 id="evidence-title">
-            나를 설명하는 세 가지 태도
+          <h2 id="approach-title">
+            경험에서 이어진 세 가지 태도
           </h2>
-          <p>03 / 나의 태도와 경험 근거</p>
+
+          <p>03 / 접근 방식과 경험 근거</p>
         </div>
 
-        <div class="strength-grid">
-          <article class="strength-card">
+        <div class="approach-grid">
+          <article class="approach-card">
             <h3>
-              <span class="number">01</span>신중하게 살펴보기
+              <span class="number">01</span>
+              문제가 생긴 이유부터 살펴봅니다
             </h3>
 
-            <p class="strength-copy">
-              쉽게 결론 내리기보다 놓친 부분이 없는지 확인하려 합니다.
+            <p class="approach-copy">
+              화면에 드러난 증상만으로 판단하지 않고,
+              문제가 생긴 과정과 조건을 함께 살펴봅니다.
             </p>
 
             <p class="proof">
               <strong>경험 근거</strong> ·
-              웹 개발에서 문제의 원인과 수정할 범위를 나누어 확인했습니다.
+              웹 개발에서 요청과 데이터 흐름을 따라 오류 원인을 확인하고,
+              수정 후 관련 기능을 점검했습니다.
             </p>
-
-            <details>
-              <summary>
-                경험 자세히 보기
-                <span class="sr-only">— 신중하게 살펴보기</span>
-              </summary>
-
-              <dl class="sar">
-                <div>
-                  <dt>상황</dt>
-                  <dd>
-                    웹 기능에 문제가 생겨도 화면만으로는
-                    이유를 알기 어려웠습니다.
-                  </dd>
-                </div>
-
-                <div>
-                  <dt>행동</dt>
-                  <dd>
-                    문제가 생긴 과정을 따라가며 원인을
-                    하나씩 확인했습니다.
-                  </dd>
-                </div>
-
-                <div>
-                  <dt>결과</dt>
-                  <dd>
-                    문제가 발생한 부분과 수정할 범위를
-                    구분해 대응했습니다.
-                  </dd>
-                </div>
-              </dl>
-            </details>
           </article>
 
-          <article class="strength-card">
+          <article class="approach-card">
             <h3>
-              <span class="number">02</span>상대의 입장 고려하기
+              <span class="number">02</span>
+              생각을 구현과 비교로 확인합니다
             </h3>
 
-            <p class="strength-copy">
-              내가 전할 내용뿐 아니라 상대가 어떻게 받아들일지도 생각합니다.
+            <p class="approach-copy">
+              떠오른 설명을 바로 결론으로 삼기보다,
+              직접 구현하고 결과를 비교해 판단할 근거를 마련합니다.
             </p>
 
             <p class="proof">
               <strong>경험 근거</strong> ·
-              사용자의 요청을 확인하고 웹 화면과 기능에 반영한 경험이 있습니다.
+              데이터사이언스 석사과정에서 로그 이상탐지 방법을 연구하고,
+              여러 접근을 비교했습니다.
             </p>
-
-            <details>
-              <summary>
-                경험 자세히 보기
-                <span class="sr-only">— 상대의 입장 고려하기</span>
-              </summary>
-
-              <dl class="sar">
-                <div>
-                  <dt>상황</dt>
-                  <dd>
-                    웹 서비스를 이용하는 사람의 요청을
-                    반영해야 했습니다.
-                  </dd>
-                </div>
-
-                <div>
-                  <dt>행동</dt>
-                  <dd>
-                    요청 내용을 확인하고 화면과 기능을 수정했습니다.
-                  </dd>
-                </div>
-
-                <div>
-                  <dt>결과</dt>
-                  <dd>
-                    사용자 요청을 서비스의 변경사항으로 반영했습니다.
-                  </dd>
-                </div>
-              </dl>
-            </details>
           </article>
 
-          <article class="strength-card">
+          <article class="approach-card">
             <h3>
-              <span class="number">03</span>의미와 방향 찾기
+              <span class="number">03</span>
+              기술이 쓰이는 맥락을 생각합니다
             </h3>
 
-            <p class="strength-copy">
-              무엇을 하느냐와 함께, 왜 하고 싶은지도 생각하려 합니다.
+            <p class="approach-copy">
+              기능이나 분석 결과가 누구에게 필요하고,
+              어떤 문제를 줄이는지까지 생각하려 합니다.
             </p>
 
             <p class="proof">
               <strong>경험 근거</strong> ·
-              이 소개에 남길 배경과 빼고 싶은 표현을 직접 선택했습니다.
+              사용자 요청을 화면과 기능에 반영한 경험을 바탕으로,
+              기술을 실제 사용 맥락과 연결해 봅니다.
             </p>
-
-            <details>
-              <summary>
-                경험 자세히 보기
-                <span class="sr-only">— 의미와 방향 찾기</span>
-              </summary>
-
-              <dl class="sar">
-                <div>
-                  <dt>상황</dt>
-                  <dd>
-                    나를 소개하는 페이지에 필요 이상의 설명이 담겼습니다.
-                  </dd>
-                </div>
-
-                <div>
-                  <dt>행동</dt>
-                  <dd>
-                    남길 내용과 빼야 할 표현을 구분하고
-                    소개의 방향을 다시 정했습니다.
-                  </dd>
-                </div>
-
-                <div>
-                  <dt>결과</dt>
-                  <dd>
-                    배경은 간단하게 남기고,
-                    나를 설명할 내용의 범위를 정했습니다.
-                  </dd>
-                </div>
-              </dl>
-            </details>
           </article>
         </div>
       </section>
     </div>
 
     <section
-      id="scope"
+      id="background"
+      class="background-section"
+      aria-labelledby="background-title"
+    >
+      <div class="background-grid">
+        <div>
+          <p class="eyebrow">
+            BACKGROUND / 두 경험이 이어진 지점
+          </p>
+
+          <h2 id="background-title">
+            <span>기능이 작동하는 이유에서,</span>
+            <span>데이터가 말하는 이유까지.</span>
+          </h2>
+        </div>
+
+        <div class="story">
+          <p>
+            <strong>
+              웹 개발에서는 실제로 사용되는 서비스를 다뤘습니다.
+            </strong>
+            사용자 요청을 화면과 기능에 반영하고,
+            운영 중 발생한 문제의 원인을 확인했습니다.
+            한 부분을 고치는 일이 다른 기능에 어떤 영향을 주는지도
+            함께 살펴야 했습니다.
+          </p>
+
+          <p>
+            <strong>
+              데이터사이언스를 공부하며 질문의 대상이 넓어졌습니다.
+            </strong>
+            어떤 데이터를 정상으로 볼지,
+            이상이라고 판단할 근거는 무엇인지 살펴보고,
+            서로 다른 방법을 구현해 결과를 비교했습니다.
+            결과의 차이를 확인하고 그 이유를 살펴보는 과정이 중요했습니다.
+          </p>
+
+          <p>
+            두 경험을 연결하는 기준은 같습니다.
+            <strong>
+              상황을 먼저 이해하고, 생각을 구현과 비교로 확인하며,
+              결과가 어떤 문제를 설명하는지 정리하는 것.
+            </strong>
+            앞으로도 개발과 분석을 함께 활용해 실제 문제를 다루고 싶습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
       class="scope"
       aria-labelledby="scope-title"
     >
-      <h2 id="scope-title">내가 정한 공개 범위</h2>
+      <h2 id="scope-title">이 페이지에 담은 범위</h2>
 
       <p>
-        이 페이지는 나를 처음 만나는 사람에게 간단한 배경과 관심사,
-        생각하는 방식을 소개합니다.
+        나를 처음 만나는 사람에게 간단한 배경과 관심사,
+        문제를 다루는 방식을 소개합니다.
       </p>
 
       <div class="scope-grid">
         <div>
           <h3>공개하는 내용</h3>
+
           <ul>
-            <li>간단한 배경과 관심사</li>
-            <li>직접 표현한 강점과 선호</li>
-            <li>경험을 일반화한 짧은 문장</li>
+            <li>개발과 학업에 관한 간단한 배경</li>
+            <li>공개 가능한 업무·연구 경험</li>
+            <li>관심사와 문제를 다루는 기준</li>
           </ul>
         </div>
 
         <div>
           <h3>공개하지 않는 내용</h3>
+
           <ul>
             <li>연락처·주소 등 불필요한 개인정보</li>
-            <li>사적인 대화와 민감한 개인 기록</li>
-            <li>내부 자료·계정 정보·비밀값</li>
+            <li>회사 내부 자료와 사적인 기록</li>
+            <li>계정 정보와 비밀값</li>
           </ul>
         </div>
       </div>
@@ -980,56 +900,7 @@
   </main>
 
   <footer class="shell">
-    © 2026 Gilsu Park. 내가 선택한 만큼의 이야기.
+    © 2026 Gilsu Park. 이해하고, 확인하고, 연결합니다.
   </footer>
-
-  <script>
-    (() => {
-      const root = document.documentElement;
-      const button = document.getElementById("motion-button");
-      const state = document.getElementById("motion-state");
-
-      if (!button || !state) return;
-
-      const system = typeof window.matchMedia === "function"
-        ? window.matchMedia("(prefers-reduced-motion: reduce)")
-        : null;
-
-      let userSelected = false;
-
-      function applyMotion(reduce) {
-        root.dataset.motion = reduce ? "reduce" : "full";
-        button.setAttribute("aria-pressed", String(reduce));
-        state.textContent = reduce ? "켜짐" : "꺼짐";
-      }
-
-      // 처음에는 운영체제의 움직임 감소 설정을 따릅니다.
-      applyMotion(Boolean(system && system.matches));
-
-      /*
-        실제 button의 기본 동작으로 클릭·Enter·Space를 지원합니다.
-        키보드 이벤트를 중복 등록하지 않습니다.
-      */
-      button.addEventListener("click", () => {
-        userSelected = true;
-        applyMotion(root.dataset.motion !== "reduce");
-      });
-
-      function followSystem(event) {
-        if (!userSelected) {
-          applyMotion(event.matches);
-        }
-      }
-
-      if (system && typeof system.addEventListener === "function") {
-        system.addEventListener("change", followSystem);
-      } else if (system && typeof system.addListener === "function") {
-        system.addListener(followSystem);
-      }
-
-      // 동작 준비가 끝난 경우에만 버튼을 표시합니다.
-      button.hidden = false;
-    })();
-  </script>
 </body>
 </html>
