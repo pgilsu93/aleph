@@ -6,7 +6,7 @@
 
   <meta
     name="description"
-    content="웹 시스템 유지보수와 데이터사이언스 연구를 바탕으로, 문제의 흐름을 파악하고 해결 방법의 효과와 한계를 살피는 박길수의 개인 페이지입니다."
+    content="AI·데이터 분야에서 함께 일할 사람에게 웹 개발, 이상탐지 연구, 학습 경험을 통해 박길수가 문제를 어떻게 배우고 해결하는지 보여주는 한 페이지입니다."
   >
 
   <meta name="theme-color" content="#f4f6f8">
@@ -28,7 +28,7 @@
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23244e78'/%3E%3Cpath d='M19 17h8v30h-8zm13 0h13v8H32zm0 22h13v8H32z' fill='white'/%3E%3C/svg%3E"
   >
 
-  <title>박길수 — 문제의 흐름을 파악하고 근거로 판단합니다</title>
+  <title>박길수 — 문제를 배우고, 추적하고, 근거로 판단합니다</title>
 
   <style>
     :root {
@@ -209,7 +209,7 @@
     /* 이동 요소와 버튼 */
     .nav-link,
     .button-link,
-    .copy-button {
+    .evidence-details summary {
       display: inline-flex;
       justify-content: center;
       align-items: center;
@@ -232,7 +232,8 @@
     }
 
     .nav-link:hover,
-    .button-link:hover {
+    .button-link:hover,
+    .evidence-details summary:hover {
       border-color: var(--accent);
       background: var(--tint);
       color: var(--accent);
@@ -240,7 +241,7 @@
 
     /* 소개 */
     .intro {
-      padding: 34px 0 28px;
+      padding: 28px 0 22px;
     }
 
     .strength-statement {
@@ -248,14 +249,14 @@
     }
 
     .intro-copy {
-      max-width: 900px;
-      margin-top: 16px;
+      max-width: 920px;
+      margin-top: 12px;
       color: var(--muted);
     }
 
     /* 경험 요약 */
     .overview {
-      padding-bottom: 40px;
+      padding-bottom: 32px;
     }
 
     .strength-grid {
@@ -268,7 +269,7 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      padding: 24px;
+      padding: 20px;
 
       border: 1px solid var(--line);
       border-radius: 10px;
@@ -284,7 +285,7 @@
     }
 
     .strength-card h3 {
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .card-copy {
@@ -298,6 +299,71 @@
     .strength-card .button-link {
       align-self: flex-start;
       margin-top: 22px;
+    }
+
+
+    .evidence-details {
+      margin-top: 18px;
+    }
+
+    .evidence-details summary {
+      width: fit-content;
+      list-style: none;
+      user-select: none;
+    }
+
+    .evidence-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .evidence-details summary::after {
+      content: " +";
+      font-weight: 800;
+    }
+
+    .evidence-details[open] summary::after {
+      content: " −";
+    }
+
+    .evidence-panel {
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--tint);
+    }
+
+    .evidence-panel p {
+      color: var(--body);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .evidence-table-wrap {
+      margin-top: 12px;
+      overflow-x: auto;
+    }
+
+    .evidence-table {
+      width: 100%;
+      min-width: 520px;
+      border-collapse: collapse;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .evidence-table th,
+    .evidence-table td {
+      padding: 9px 10px;
+      border: 1px solid #bcc8d4;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .evidence-table th {
+      background: #ffffff;
+      color: var(--ink);
+      font-weight: 700;
     }
 
     /* 상세 경험 */
@@ -418,29 +484,6 @@
     .purpose {
       margin-bottom: 14px;
       color: var(--muted);
-    }
-
-    .copy-button {
-      margin-top: 18px;
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #ffffff;
-    }
-
-    .copy-button:hover {
-      background: #183b5d;
-      border-color: #183b5d;
-    }
-
-    .copy-button[aria-busy="true"] {
-      cursor: wait;
-    }
-
-    .copy-status {
-      min-height: 2em;
-      margin-top: 8px;
-      color: var(--accent);
-      font-size: 14px;
     }
 
     .scope-grid {
@@ -632,9 +675,7 @@
 
       .site-header,
       .skip-link,
-      .button-link,
-      .copy-button,
-      .copy-status {
+      .button-link {
         display: none !important;
       }
 
@@ -691,6 +732,10 @@
         <a class="nav-link" href="#preferences">
           좋아하는 방식
         </a>
+
+        <a class="nav-link" href="#scope">
+          공개 범위
+        </a>
       </nav>
     </div>
   </header>
@@ -699,15 +744,14 @@
     <div class="wrap">
       <section class="intro" aria-labelledby="intro-title">
         <h1 class="strength-statement" id="intro-title">
-          문제를 연결된 흐름 속에서 파악하고,<br class="desktop-break">
-          해결 방법의 효과와 한계를 근거로 판단합니다.
+          문제를 배우고, 흐름을 따라 추적하고,<br class="desktop-break">
+          확인한 근거로 판단합니다.
         </h1>
 
         <p class="intro-copy">
-          웹 시스템 유지보수와 데이터사이언스 석사 연구를 경험한 박길수입니다.
-          개발에서는 화면의 동작을 처리 로직과 데이터까지 따라가며 살폈고,
-          연구에서는 같은 방법도 데이터에 따라 효과가 달라지는 이유에 관심을 두었습니다.
-          지금은 두 경험을 보안 분야의 이상탐지 프로젝트로 연결하고 있습니다.
+          <strong>AI·데이터 분야에서 함께 일할 분들에게</strong>
+          제가 어떤 문제에 관심을 가지고, 어떻게 배우고 해결해 왔는지를
+          웹 개발·이상탐지 연구·학습 경험을 통해 보여주는 한 페이지입니다.
         </p>
       </section>
 
@@ -731,23 +775,57 @@
             </p>
 
             <h3 id="research-summary-title">
-              성능이 좋아진 조건과,<br>
-              그렇지 않은 조건을 함께 봅니다.
+              조건과 근거를 함께 확인합니다.
             </h3>
 
             <div class="card-copy">
               <p>
-                로그 이상탐지 연구에서 시간 정보와 그래프 연결 방식을
-                바꾸며 탐지 성능을 비교했습니다.
-              </p>
-
-              <p>
-                시간 가중치는 실험한 세 데이터셋에서 공통으로 개선을
-                보였지만, 가장 효과적인 방법은 데이터마다 달랐습니다.
-                여러 방법을 결합하는 것이 항상 더 좋은 결과로
-                이어지지도 않았습니다.
+                로그 그래프에 시간 정보를 반영하는 여러 방법을
+                BGL·Thunderbird·HDFS에서 비교하고,
+                좋아진 결과와 그렇지 않은 결과를 함께 해석했습니다.
               </p>
             </div>
+
+            <details class="evidence-details">
+              <summary>연구 결과 근거 보기</summary>
+
+              <div class="evidence-panel">
+                <p>
+                  공개 가능한 결과만 요약했습니다.
+                  시간 가중치는 세 데이터셋에서 공통으로 F1이 개선됐고,
+                  데이터에 따라 가장 효과적인 방법은 달랐습니다.
+                </p>
+
+                <div class="evidence-table-wrap" role="region" aria-label="이상탐지 연구 결과 요약" tabindex="0">
+                  <table class="evidence-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">데이터셋</th>
+                        <th scope="col">확인한 결과</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>BGL</td>
+                        <td>시간 가중치 적용 시 F1 개선</td>
+                      </tr>
+                      <tr>
+                        <td>Thunderbird</td>
+                        <td>시간 가중치 적용 시 F1 개선, 발생 집중도를 반영한 방법이 가장 높은 결과</td>
+                      </tr>
+                      <tr>
+                        <td>HDFS</td>
+                        <td>시간 가중치 적용 시 F1 개선, Top-k 방식이 가장 높은 결과</td>
+                      </tr>
+                      <tr>
+                        <td>결합 실험</td>
+                        <td>여러 방법을 함께 적용해도 개별 적용보다 성능이 낮아지는 경우 확인</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </details>
 
             <a
               class="button-link"
@@ -767,20 +845,13 @@
             </p>
 
             <h3 id="development-summary-title">
-              화면·처리 로직·데이터를<br>
-              연결해 문제를 파악합니다.
+              문제의 흐름을 따라 원인을 좁힙니다.
             </h3>
 
             <div class="card-copy">
               <p>
-                운영 웹 시스템에서 사용자 요청을 반영하고
-                오류의 원인을 추적했습니다.
-              </p>
-
-              <p>
-                화면에서 드러난 문제를 애플리케이션의 처리 흐름,
-                SQL, 로그와 연결해 살폈습니다.
-                수정한 뒤에는 관련 기능에 미치는 영향까지 확인했습니다.
+                운영 웹 시스템의 화면·처리 로직·SQL·로그를 함께 살피며
+                오류 원인을 추적하고, 수정 뒤에는 관련 기능의 영향 범위도 확인했습니다.
               </p>
             </div>
 
@@ -795,36 +866,30 @@
 
           <article
             class="strength-card"
-            aria-labelledby="direction-summary-title"
+            aria-labelledby="learning-summary-title"
           >
             <p class="card-meta">
-              03 · 보안 프로젝트 설계
+              03 · 학습과 지식 공유
             </p>
 
-            <h3 id="direction-summary-title">
-              탐지 결과를 저장하고<br>
-              확인하는 과정까지 설계합니다.
+            <h3 id="learning-summary-title">
+              배운 것은 설명할 수 있는 형태로 정리합니다.
             </h3>
 
             <div class="card-copy">
               <p>
-                네트워크 보안을 배우며, 이상탐지 연구와 웹 개발 경험을
-                함께 활용할 프로젝트를 구상했습니다.
-              </p>
-
-              <p>
-                탐지 방법을 비교하는 실험과 API·결과 저장·조회 화면을
-                연결해, 탐지 결과를 확인할 수 있는 구조를
-                설계하고 있습니다.
+                Java를 어려워하는 학과생들을 위한 동아리에서 요청을 받아
+                한 학기 동안 수업을 진행했고,
+                이후 AI 교육에서도 주변 학습자의 질문과 코드 오류 해결을 도왔습니다.
               </p>
             </div>
 
             <a
               class="button-link"
-              href="#direction"
-              aria-label="보안 프로젝트 설계 내용 자세히 보기"
+              href="#learning"
+              aria-label="학습과 지식 공유 경험 자세히 보기"
             >
-              설계 내용 보기
+              경험 자세히 보기
             </a>
           </article>
         </div>
@@ -975,61 +1040,57 @@
 
         <article
           class="case"
-          id="direction"
-          aria-labelledby="direction-title"
+          id="learning"
+          aria-labelledby="learning-title"
           tabindex="-1"
         >
           <div class="case-heading">
             <p class="case-number">
-              03 · 보안 프로젝트 설계
+              03 · 학습과 지식 공유
             </p>
 
-            <h3 id="direction-title">
-              연구에서 얻은 결과를<br>
-              서비스의 흐름으로 연결하기
+            <h3 id="learning-title">
+              혼자 아는 것보다<br>
+              설명할 수 있을 때까지
             </h3>
 
             <p class="case-note">
-              현재 진행 중인 방향 설정과 구조 설계
+              Java 동아리 수업과 AI 교육과정에서의 학습 지원
             </p>
           </div>
 
           <div class="case-content">
             <p>
-              네트워크 보안 강의를 들으며 웹 개발과 로그 이상탐지 연구를
-              어떤 문제에 함께 활용할 수 있을지 고민했습니다.
-              프로젝트의 대상으로 네트워크 흐름에서 이상 징후를
-              탐지하는 문제를 잡았습니다.
+              대학교 4학년 때 학과에서 Java를 어려워하는 학생들이 많아
+              Java 동아리가 만들어졌고, 요청을 받아 한 학기 동안
+              다른 학생과 교대로 수업을 진행했습니다.
             </p>
 
             <p>
-              탐지 부분에서는 규칙 기반 방법과 머신러닝·딥러닝 방법을
-              비교하도록 계획했습니다.
-              연구 경험을 활용해 각 방법이 어떤 조건에서 효과적인지
-              확인하고, 그 결과를 바탕으로 탐지 방식을 판단하려는
-              구성입니다.
+              수업에서는 제가 알고 있는 내용을 그대로 말하기보다,
+              처음 배우는 사람이 따라올 수 있도록 개념과 코드의 순서를
+              나누어 설명하려고 했습니다.
+              이후 6개월 AI 교육과정에서도 주변 교육생이 어려워하는 내용을
+              설명하고 코드 오류의 원인을 함께 확인했습니다.
             </p>
 
             <p>
-              동시에 탐지 결과가 이후에 어떻게 전달되고 확인되는지도
-              설계에 포함했습니다.
               <strong>
-                추론 API가 결과를 전달하고, 이를 데이터베이스에 저장한 뒤,
-                웹 화면에서 조회하는 흐름
-              </strong>으로 역할을 나눴습니다.
-              웹 개발 경험은 이 과정의 API·데이터 처리·조회 기능에
-              연결했습니다.
+                Java 동아리에서는 한 학기 동안 수업을 이어갔고,
+                AI 교육과정은 수료하면서 우수상을 받았습니다.
+              </strong>
+              두 경험을 통해 새로운 내용을 배우는 것과
+              다른 사람이 이해할 수 있는 형태로 다시 정리하는 과정이
+              서로 연결되어 있다는 점을 확인했습니다.
             </p>
 
             <div class="case-takeaway">
               <p>
-                현재는
+                이후에도 새로운 기술을 배울 때
                 <strong>
-                  탐지 대상과 비교 방법, 구성 요소별 역할을 정리한
-                  설계 단계
-                </strong>입니다.
-                앞으로의 구현에서는 탐지 성능과 함께 결과가 저장되고
-                화면까지 전달되는 과정도 확인하려고 합니다.
+                  원리와 과정을 제 말로 다시 설명할 수 있는지
+                </strong>
+                확인하는 방식을 중요하게 생각합니다.
               </p>
             </div>
           </div>
@@ -1049,8 +1110,8 @@
         </h2>
 
         <p>
-          일을 선택하고, 새로운 것을 배우고, 사람과 대화할 때
-          중요하게 생각하는 것들입니다.
+          새로운 것을 배우고 문제를 확인하며 다른 사람과 이야기할 때
+          자연스럽게 선호하는 방식입니다.
         </p>
       </div>
 
@@ -1094,36 +1155,23 @@
       <div class="wrap closing-grid">
         <div>
           <h2 id="closing-title">
-            함께 일할 분들께
+            이 페이지가 보여주려는 것
           </h2>
 
           <p class="purpose">
-            이 페이지는 함께 일할 분들에게 제가 어떤 경험을 바탕으로
-            판단하고 행동하는지 소개하기 위해 만들었습니다.
+            이 페이지는 이력서를 그대로 옮기기보다,
+            제가 문제를 배우고 추적하고 판단해 온 방식을
+            세 가지 실제 경험으로 보여주기 위해 만들었습니다.
           </p>
 
-          <p id="share-intro">웹 시스템 유지보수와 데이터사이언스 연구를 바탕으로, 문제를 연결된 흐름 속에서 파악하고 해결 방법의 효과와 한계를 근거로 판단하는 박길수입니다.</p>
-
-          <button
-            class="copy-button"
-            id="copy-intro"
-            type="button"
-            aria-describedby="copy-status"
-            hidden
-          >
-            소개 문장 복사
-          </button>
-
-          <p
-            class="copy-status"
-            id="copy-status"
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
-          ></p>
+          <p>
+            공개할 정보는 경험을 이해하는 데 필요한 수준으로 제한하고,
+            회사 내부 자료·개인 연락처·계정 정보처럼
+            공개 목적과 관계없는 정보는 포함하지 않았습니다.
+          </p>
         </div>
 
-        <div>
+        <div id="scope">
           <h2>이 페이지의 공개 범위</h2>
 
           <div class="scope-grid">
@@ -1131,9 +1179,9 @@
               <h3>공개하는 내용</h3>
 
               <ul>
-                <li>간단한 소개와 관심 분야</li>
-                <li>개발·연구 경험과 맡은 역할</li>
-                <li>일하는 방식과 선호</li>
+                <li>간단한 소개와 AI·데이터 관심 분야</li>
+                <li>웹 개발·이상탐지 연구·학습 경험</li>
+                <li>공개 가능한 연구 결과와 일하는 방식</li>
               </ul>
             </div>
 
@@ -1141,9 +1189,9 @@
               <h3>공개하지 않는 내용</h3>
 
               <ul>
-                <li>개인 연락처와 생활 정보</li>
-                <li>회사 내부 자료와 고객 정보</li>
-                <li>계정·서버 접속 정보</li>
+                <li>전화번호·주소·생년월일 등 개인 연락·생활 정보</li>
+                <li>회사 내부 자료·고객 정보·실제 운영 데이터</li>
+                <li>비밀번호·토큰·API 키·서버 접속 정보</li>
               </ul>
             </div>
           </div>
@@ -1164,57 +1212,5 @@
     </div>
   </footer>
 
-  <script>
-    (() => {
-      const button = document.getElementById("copy-intro");
-      const intro = document.getElementById("share-intro");
-      const status = document.getElementById("copy-status");
-
-      if (!button || !intro || !status) return;
-
-      let copying = false;
-
-      // 스크립트가 실행될 때만 복사 버튼을 표시합니다.
-      button.hidden = false;
-
-      button.addEventListener("click", async () => {
-        if (copying) return;
-
-        copying = true;
-        status.textContent = "";
-        button.setAttribute("aria-busy", "true");
-
-        try {
-          if (!navigator.clipboard || !window.isSecureContext) {
-            throw new Error("clipboard unavailable");
-          }
-
-          await navigator.clipboard.writeText(
-            intro.textContent.trim()
-          );
-
-          status.textContent =
-            "소개 문장을 복사했습니다. 원하는 곳에 붙여 넣으세요.";
-        } catch {
-          // 자동 복사가 제한되면 직접 복사할 수 있도록 문장을 선택합니다.
-          const selection = window.getSelection();
-
-          if (selection) {
-            const range = document.createRange();
-            range.selectNodeContents(intro);
-
-            selection.removeAllRanges();
-            selection.addRange(range);
-          }
-
-          status.textContent =
-            "자동 복사가 되지 않았습니다. 위 소개 문장을 선택해 직접 복사해 주세요.";
-        } finally {
-          copying = false;
-          button.removeAttribute("aria-busy");
-        }
-      });
-    })();
-  </script>
 </body>
 </html>
