@@ -10,34 +10,34 @@
 
   <meta
     name="description"
-    content="웹 시스템 유지보수와 로그 이상탐지 연구 경험을 바탕으로 문제를 추적하고 검증해 온 박길수의 개인 페이지입니다."
+    content="웹 시스템 유지보수와 로그 이상탐지 연구 경험을 바탕으로, 문제를 구조적으로 이해하고 필요한 정보를 찾아 검증해 온 박길수의 개인 페이지입니다."
   >
 
-  <meta name="theme-color" content="#f5f7fa">
+  <meta name="theme-color" content="#f6f7f9">
 
-  <title>박길수 | 개발과 연구 경험</title>
+  <title>박길수 | 개발과 데이터에서 문제를 이해하는 과정</title>
 
   <style>
     :root {
       color-scheme: light;
 
-      --background: #f5f7fa;
+      --background: #f6f7f9;
       --surface: #ffffff;
-      --surface-soft: #eef3f7;
+      --surface-soft: #eef3f6;
 
-      --ink: #172333;
-      --body: #334257;
-      --muted: #536276;
+      --ink: #1d2a38;
+      --body: #3f5063;
+      --muted: #536477;
 
-      --accent: #24527d;
-      --accent-dark: #193d5e;
+      --accent: #24557a;
+      --accent-dark: #183c59;
 
-      --line: #cfd8e2;
-      --line-strong: #aebbc8;
+      --line: #d3dce4;
+      --line-strong: #b8c5d0;
 
       --focus: #005fcc;
 
-      --max-width: 1180px;
+      --max-width: 1160px;
     }
 
     * {
@@ -67,7 +67,9 @@
 
       font-size: 16px;
       font-weight: 400;
-      line-height: 1.7;
+      line-height: 1.72;
+
+      letter-spacing: -0.01em;
 
       word-break: keep-all;
       overflow-wrap: anywhere;
@@ -84,36 +86,40 @@
     h2,
     h3 {
       color: var(--ink);
+
+      letter-spacing: -0.035em;
     }
 
     h1 {
-      font-size: clamp(29px, 3vw, 40px);
+      font-size: clamp(29px, 2.7vw, 38px);
       font-weight: 750;
-      line-height: 1.3;
-      letter-spacing: -0.04em;
+      line-height: 1.35;
     }
 
     h2 {
-      font-size: 25px;
+      font-size: 24px;
       font-weight: 730;
-      line-height: 1.4;
-      letter-spacing: -0.03em;
+      line-height: 1.45;
     }
 
     h3 {
       font-size: 19px;
       font-weight: 700;
-      line-height: 1.45;
-      letter-spacing: -0.02em;
+      line-height: 1.5;
+    }
+
+    strong {
+      color: var(--ink);
+      font-weight: 700;
     }
 
     a {
       color: inherit;
     }
 
-    strong {
-      color: var(--ink);
-      font-weight: 700;
+    button,
+    summary {
+      font: inherit;
     }
 
     :focus-visible {
@@ -122,7 +128,7 @@
     }
 
     ::selection {
-      background: #d7e7f8;
+      background: #d9e8f4;
       color: var(--ink);
     }
 
@@ -135,9 +141,9 @@
       margin-inline: auto;
     }
 
-    /* =========================
+    /* ========================================
        접근성
-    ========================= */
+    ======================================== */
 
     .skip-link {
       position: fixed;
@@ -157,20 +163,21 @@
     }
 
     .skip-link:focus {
-      transform: translateY(0);
+      transform: none;
     }
 
-    /* =========================
+    /* ========================================
        Header
-    ========================= */
+    ======================================== */
 
     .site-header {
-      background: rgba(255, 255, 255, 0.96);
+      background: #ffffff;
+
       border-bottom: 1px solid var(--line);
     }
 
     .header-inner {
-      min-height: 62px;
+      min-height: 60px;
 
       display: flex;
       align-items: center;
@@ -182,7 +189,7 @@
     .brand {
       color: var(--ink);
 
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 750;
 
       text-decoration: none;
@@ -191,7 +198,8 @@
     .nav {
       display: flex;
       align-items: center;
-      gap: 4px;
+
+      gap: 2px;
     }
 
     .nav a {
@@ -217,50 +225,54 @@
       color: var(--accent-dark);
     }
 
-    /* =========================
-       Hero
-    ========================= */
+    /* ========================================
+       Intro
+    ======================================== */
 
-    .hero {
-      padding: 34px 0 26px;
+    .intro {
+      padding: 31px 0 25px;
     }
 
-    .hero-inner {
+    .intro-grid {
       display: grid;
 
       grid-template-columns:
-        minmax(0, 1.45fr)
-        minmax(260px, 0.55fr);
+        minmax(0, 1.55fr)
+        minmax(250px, 0.45fr);
 
       gap: 56px;
 
       align-items: end;
     }
 
-    .hero-kicker {
+    .eyebrow {
       margin-bottom: 8px;
 
       color: var(--accent);
 
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 750;
+
+      letter-spacing: 0.02em;
     }
 
-    .hero-copy {
+    .intro-copy {
       max-width: 820px;
 
-      margin-top: 14px;
+      margin-top: 13px;
 
-      color: var(--muted);
+      color: var(--body);
+
+      line-height: 1.75;
     }
 
-    .hero-side {
-      padding-left: 22px;
+    .intro-side {
+      padding-left: 20px;
 
       border-left: 2px solid var(--line);
     }
 
-    .hero-side-title {
+    .intro-side-label {
       margin-bottom: 6px;
 
       color: var(--muted);
@@ -269,19 +281,19 @@
       font-weight: 700;
     }
 
-    .hero-side p {
+    .intro-side p:last-child {
       color: var(--body);
 
       font-size: 14px;
       line-height: 1.65;
     }
 
-    /* =========================
-       Overview
-    ========================= */
+    /* ========================================
+       Experience overview
+    ======================================== */
 
     .overview {
-      padding-bottom: 34px;
+      padding-bottom: 36px;
     }
 
     .experience-grid {
@@ -307,8 +319,8 @@
       background: var(--surface);
     }
 
-    .card-number {
-      margin-bottom: 7px;
+    .card-meta {
+      margin-bottom: 8px;
 
       color: var(--accent);
 
@@ -317,19 +329,19 @@
     }
 
     .experience-card h2 {
-      margin-bottom: 10px;
+      margin-bottom: 11px;
 
       font-size: 19px;
-      line-height: 1.45;
+      line-height: 1.48;
     }
 
-    .card-description {
+    .card-copy {
       flex: 1;
 
       color: var(--body);
 
       font-size: 14px;
-      line-height: 1.65;
+      line-height: 1.68;
     }
 
     .card-result {
@@ -341,7 +353,7 @@
       color: var(--muted);
 
       font-size: 13px;
-      line-height: 1.6;
+      line-height: 1.62;
     }
 
     .card-link {
@@ -354,16 +366,21 @@
       font-size: 14px;
       font-weight: 700;
 
+      text-decoration-line: underline;
       text-decoration-thickness: 1px;
       text-underline-offset: 4px;
     }
 
-    /* =========================
-       Research evidence
-    ========================= */
+    .card-link:hover {
+      color: var(--accent);
+    }
+
+    /* ========================================
+       Research evidence interaction
+    ======================================== */
 
     .research-evidence {
-      margin-top: 16px;
+      margin-top: 15px;
     }
 
     .research-evidence summary {
@@ -382,8 +399,8 @@
       text-underline-offset: 4px;
     }
 
-    .evidence-content {
-      margin-top: 14px;
+    .evidence-panel {
+      margin-top: 13px;
       padding: 15px;
 
       border: 1px solid var(--line);
@@ -392,90 +409,101 @@
       background: var(--surface-soft);
     }
 
-    .evidence-intro {
+    .evidence-panel > p {
       color: var(--body);
+
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .evidence-points {
+      display: grid;
+
+      gap: 8px;
+
+      margin: 12px 0 0;
+      padding: 0;
+
+      list-style: none;
+    }
+
+    .evidence-points li {
+      display: grid;
+
+      grid-template-columns: 92px minmax(0, 1fr);
+
+      gap: 10px;
+
+      padding-top: 8px;
+
+      border-top: 1px solid var(--line);
 
       font-size: 13px;
       line-height: 1.6;
     }
 
-    .result-table-wrap {
-      margin-top: 12px;
-
-      overflow-x: auto;
-    }
-
-    .result-table {
-      width: 100%;
-      min-width: 520px;
-
-      border-collapse: collapse;
-
-      background: var(--surface);
-
+    .evidence-points strong {
       font-size: 13px;
     }
 
-    .result-table th,
-    .result-table td {
-      padding: 9px 10px;
+    /* ========================================
+       Detail section
+    ======================================== */
 
-      border: 1px solid var(--line-strong);
-
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .result-table th {
-      background: #e8eef4;
-
-      color: var(--ink);
-
-      font-weight: 700;
-    }
-
-    /* =========================
-       Experience detail
-    ========================= */
-
-    .experience-section {
+    .detail-section {
       background: var(--surface);
 
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
 
+    .detail-header {
+      padding-top: 38px;
+    }
+
+    .detail-header p {
+      max-width: 680px;
+
+      margin-top: 7px;
+
+      color: var(--muted);
+    }
+
     .case {
       display: grid;
 
       grid-template-columns:
-        minmax(180px, 240px)
+        minmax(185px, 245px)
         minmax(0, 1fr);
 
       gap: 48px;
 
-      padding: 42px 0;
+      padding: 39px 0 43px;
+    }
+
+    .detail-header + .case {
+      padding-top: 30px;
     }
 
     .case + .case {
       border-top: 1px solid var(--line);
     }
 
-    .case-meta {
+    .case-number {
       color: var(--accent);
 
       font-size: 13px;
       font-weight: 750;
     }
 
-    .case-heading h2 {
-      margin-top: 8px;
+    .case-heading h3 {
+      margin-top: 7px;
 
       font-size: 21px;
-      line-height: 1.45;
+      line-height: 1.48;
     }
 
-    .case-subtitle {
+    .case-note {
       margin-top: 9px;
 
       color: var(--muted);
@@ -488,11 +516,15 @@
       max-width: 760px;
     }
 
-    .case-body p + p {
+    .case-body > p + p {
       margin-top: 16px;
     }
 
-    .case-result-box {
+    .case-body p {
+      line-height: 1.82;
+    }
+
+    .case-focus {
       margin-top: 20px;
       padding: 18px 20px;
 
@@ -501,26 +533,74 @@
       background: var(--surface-soft);
     }
 
-    .case-result-box p {
-      line-height: 1.7;
+    .case-focus p {
+      line-height: 1.72;
     }
 
-    /* =========================
+    /* ========================================
+       Research signal block
+    ======================================== */
+
+    .signal-block {
+      margin-top: 22px;
+    }
+
+    .signal-block h3 {
+      margin-bottom: 12px;
+
+      font-size: 16px;
+    }
+
+    .signal-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 10px;
+    }
+
+    .signal {
+      padding: 14px;
+
+      border: 1px solid var(--line);
+      border-radius: 7px;
+
+      background: #ffffff;
+    }
+
+    .signal-title {
+      margin-bottom: 5px;
+
+      color: var(--ink);
+
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .signal p:last-child {
+      color: var(--muted);
+
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* ========================================
        Preferences
-    ========================= */
+    ======================================== */
 
     .preferences {
-      padding: 44px 0;
+      padding: 43px 0 46px;
     }
 
-    .section-head {
-      max-width: 760px;
+    .section-heading {
+      max-width: 700px;
 
       margin-bottom: 25px;
     }
 
-    .section-head p {
-      margin-top: 8px;
+    .section-heading p {
+      margin-top: 7px;
 
       color: var(--muted);
     }
@@ -531,7 +611,7 @@
       grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
-      gap: 26px;
+      gap: 28px;
     }
 
     .preference {
@@ -542,22 +622,25 @@
 
     .preference h3 {
       margin-bottom: 8px;
+
+      font-size: 17px;
     }
 
     .preference p {
       color: var(--body);
 
       font-size: 14px;
+      line-height: 1.68;
     }
 
-    /* =========================
-       Scope
-    ========================= */
+    /* ========================================
+       Public scope
+    ======================================== */
 
     .scope-section {
-      padding: 40px 0;
+      padding: 39px 0;
 
-      background: #e9eff4;
+      background: #edf2f5;
 
       border-top: 1px solid var(--line);
     }
@@ -566,16 +649,18 @@
       display: grid;
 
       grid-template-columns:
-        minmax(0, 0.8fr)
-        minmax(0, 1.2fr);
+        minmax(0, 0.75fr)
+        minmax(0, 1.25fr);
 
-      gap: 52px;
+      gap: 50px;
     }
 
     .scope-intro p {
-      margin-top: 10px;
+      margin-top: 9px;
 
       color: var(--body);
+
+      font-size: 14px;
     }
 
     .scope-grid {
@@ -584,30 +669,32 @@
       grid-template-columns:
         repeat(2, minmax(0, 1fr));
 
-      gap: 20px;
+      gap: 16px;
     }
 
     .scope-box {
-      padding: 20px;
+      padding: 19px;
 
       border: 1px solid var(--line-strong);
       border-radius: 8px;
 
-      background: var(--surface);
+      background: #ffffff;
     }
 
     .scope-box h3 {
-      margin-bottom: 12px;
+      margin-bottom: 11px;
 
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .scope-box ul {
       margin: 0;
-      padding-left: 1.25em;
+      padding-left: 1.2em;
     }
 
     .scope-box li {
+      color: var(--body);
+
       font-size: 14px;
       line-height: 1.65;
     }
@@ -616,14 +703,14 @@
       margin-top: 7px;
     }
 
-    /* =========================
+    /* ========================================
        Footer
-    ========================= */
+    ======================================== */
 
     .site-footer {
-      padding: 20px 0;
+      padding: 19px 0;
 
-      background: var(--surface);
+      background: #ffffff;
     }
 
     .footer-inner {
@@ -634,7 +721,7 @@
       gap: 20px;
     }
 
-    .site-footer p {
+    .footer-inner p {
       color: var(--muted);
 
       font-size: 13px;
@@ -649,9 +736,31 @@
       text-underline-offset: 4px;
     }
 
-    /* =========================
-       Responsive
-    ========================= */
+    /* ========================================
+       1366 × 768처럼 높이가 낮은 화면
+    ======================================== */
+
+    @media (min-width: 1001px) and (max-height: 820px) {
+      .intro {
+        padding: 24px 0 20px;
+      }
+
+      .experience-card {
+        padding: 18px;
+      }
+
+      .overview {
+        padding-bottom: 28px;
+      }
+
+      .card-copy {
+        line-height: 1.6;
+      }
+    }
+
+    /* ========================================
+       Tablet
+    ======================================== */
 
     @media (max-width: 1000px) {
       .wrap {
@@ -661,18 +770,18 @@
         );
       }
 
-      .hero-inner {
+      .intro-grid {
         grid-template-columns: 1fr;
 
-        gap: 22px;
+        gap: 20px;
       }
 
-      .hero-side {
+      .intro-side {
+        padding-top: 13px;
         padding-left: 0;
-        padding-top: 14px;
 
-        border-left: 0;
         border-top: 1px solid var(--line);
+        border-left: 0;
       }
 
       .experience-grid {
@@ -680,17 +789,29 @@
       }
 
       .case {
-        grid-template-columns: 180px 1fr;
+        grid-template-columns:
+          minmax(150px, 190px)
+          minmax(0, 1fr);
 
         gap: 28px;
       }
 
+      .signal-grid {
+        grid-template-columns: 1fr;
+      }
+
       .scope-layout {
         grid-template-columns: 1fr;
+
+        gap: 26px;
       }
     }
 
-    @media (max-width: 720px) {
+    /* ========================================
+       Mobile
+    ======================================== */
+
+    @media (max-width: 680px) {
       .wrap {
         width: calc(100% - 32px);
       }
@@ -701,7 +822,9 @@
         flex-direction: column;
         align-items: flex-start;
 
-        padding: 12px 0;
+        gap: 7px;
+
+        padding: 11px 0;
       }
 
       .nav {
@@ -714,20 +837,24 @@
         white-space: nowrap;
       }
 
-      .hero {
-        padding: 28px 0 24px;
+      .intro {
+        padding: 26px 0 23px;
       }
 
       h1 {
-        font-size: 28px;
+        font-size: 27px;
       }
 
       .case {
         grid-template-columns: 1fr;
 
-        gap: 18px;
+        gap: 17px;
 
-        padding: 32px 0;
+        padding: 30px 0 33px;
+      }
+
+      .detail-header {
+        padding-top: 30px;
       }
 
       .preference-grid {
@@ -750,9 +877,9 @@
       *,
       *::before,
       *::after {
-        scroll-behavior: auto !important;
         animation: none !important;
         transition: none !important;
+        scroll-behavior: auto !important;
       }
     }
 
@@ -773,21 +900,23 @@
       }
 
       .experience-grid,
+      .signal-grid,
       .preference-grid,
-      .scope-grid,
       .scope-layout,
+      .scope-grid,
       .case {
         grid-template-columns: 1fr;
       }
 
       .experience-card,
-      .preference,
-      .case {
+      .case,
+      .preference {
         break-inside: avoid;
       }
     }
   </style>
 </head>
+
 
 <body>
 
@@ -797,6 +926,7 @@
   >
     본문으로 바로 가기
   </a>
+
 
   <header class="site-header">
 
@@ -837,56 +967,64 @@
     tabindex="-1"
   >
 
-    <!-- =========================
-         Hero
-    ========================== -->
+    <!-- =====================================
+         INTRO
+    ====================================== -->
 
-    <section class="hero">
+    <section class="intro">
 
-      <div class="wrap hero-inner">
+      <div class="wrap intro-grid">
 
         <div>
 
-          <p class="hero-kicker">
+          <p class="eyebrow">
             WEB DEVELOPMENT · DATA SCIENCE · ANOMALY DETECTION
           </p>
 
           <h1>
-            문제를 따라가며 원인을 찾고,<br>
-            확인한 결과로 다음 판단을 합니다.
+            문제가 생긴 지점을 찾고,<br>
+            그 안에서 의미 있는 정보를 구분합니다.
           </h1>
 
-          <p class="hero-copy">
-            웹 시스템 유지보수 개발자로 일한 뒤
-            데이터사이언스를 공부하고 로그 이상탐지를 연구했습니다.
-            개발에서는 화면에서 발생한 문제를 처리 로직과 데이터까지 따라갔고,
-            연구에서는 하나의 결과보다 여러 조건에서 같은 효과가 나타나는지 확인했습니다.
+          <p class="intro-copy">
+            웹 시스템 유지보수 개발자로 일하며
+            사용자의 요청과 장애를 화면 하나의 문제로만 보지 않고
+            애플리케이션 로직, SQL, 데이터, 로그가 이어지는 흐름 안에서
+            원인을 찾아 수정해 왔습니다.
+            이후 데이터사이언스를 공부하면서
+            이런 관심을 로그 데이터 자체로 확장했고,
+            석사과정에서는 로그에서 이상을 구분하는 데
+            어떤 정보가 실제로 유효한지를 연구했습니다.
           </p>
 
         </div>
 
-        <div class="hero-side">
 
-          <p class="hero-side-title">
+        <aside
+          class="intro-side"
+          aria-label="페이지 소개"
+        >
+
+          <p class="intro-side-label">
             이 페이지
           </p>
 
           <p>
-            AI·데이터 분야에서 함께 일할 분들에게
-            제가 무엇을 경험했고 문제를 어떤 방식으로 다뤄왔는지
-            보여주기 위해 만들었습니다.
+            제가 어떤 문제를 다뤄왔고,
+            새로운 내용을 어떻게 이해하고 실제 작업으로 연결하는지
+            세 가지 경험을 중심으로 정리했습니다.
           </p>
 
-        </div>
+        </aside>
 
       </div>
 
     </section>
 
 
-    <!-- =========================
-         First view / Overview
-    ========================== -->
+    <!-- =====================================
+         OVERVIEW
+    ====================================== -->
 
     <section
       class="overview"
@@ -895,117 +1033,84 @@
 
       <div class="wrap experience-grid">
 
-        <!-- 연구 -->
+
+        <!-- RESEARCH -->
 
         <article class="experience-card">
 
-          <p class="card-number">
-            01 · 연구
+          <p class="card-meta">
+            01 · 로그 이상탐지 연구
           </p>
 
           <h2>
-            같은 방법도 여러 조건에서 다시 확인했습니다.
+            로그에서 무엇이 이상을 설명하는 정보인지 살펴봤습니다.
           </h2>
 
-          <p class="card-description">
-            로그 사이의 시간 관계를 활용하는 방법을 설계하고
-            BGL, Thunderbird, HDFS에서 기존 방법과 비교했습니다.
+          <p class="card-copy">
+            로그의 발생 시간 간격, 짧은 시간에 로그가 집중되는 정도,
+            로그 레벨처럼 운영 상황을 설명할 수 있는 정보를 정리하고,
+            기존 모델이 충분히 사용하지 못하던 특징을
+            그래프 구조와 가중치에 반영하도록 다시 설계했습니다.
           </p>
 
           <p class="card-result">
-            <strong>결과</strong><br>
-            시간 가중치는 세 데이터셋 모두에서 F1이 개선됐고,
-            데이터에 따라 가장 효과적인 방법은 달랐습니다.
+            <strong>확인한 점</strong><br>
+            여러 특징을 따로 비교했을 때
+            시간 정보는 서로 다른 로그 데이터에서도
+            공통적으로 성능 개선에 기여했습니다.
           </p>
+
 
           <details class="research-evidence">
 
             <summary>
-              실험 결과 보기
+              실험에서 확인한 내용
             </summary>
 
-            <div class="evidence-content">
+            <div class="evidence-panel">
 
-              <p class="evidence-intro">
-                세 데이터셋에서 시간 정보를 적용한 방법과
-                다른 그래프 연결 방식을 비교했습니다.
+              <p>
+                로그가 발생한 순서만 보는 대신,
+                발생 시점과 빈도, 중요도를 모델이 구분할 수 있도록
+                여러 특징을 기존 그래프 표현에 추가해 비교했습니다.
               </p>
 
-              <div
-                class="result-table-wrap"
-                role="region"
-                aria-label="로그 이상탐지 실험 결과"
-                tabindex="0"
-              >
+              <ul class="evidence-points">
 
-                <table class="result-table">
+                <li>
+                  <strong>시간 간격</strong>
 
-                  <thead>
-                    <tr>
-                      <th scope="col">
-                        실험
-                      </th>
+                  <span>
+                    가까운 시간에 발생한 로그의 관계를 더 강하게 반영했으며,
+                    BGL·Thunderbird·HDFS에서 공통적으로 F1이 개선됐습니다.
+                  </span>
+                </li>
 
-                      <th scope="col">
-                        확인한 결과
-                      </th>
-                    </tr>
-                  </thead>
+                <li>
+                  <strong>Burst</strong>
 
-                  <tbody>
+                  <span>
+                    짧은 구간에 로그가 집중되는 정도를 별도 신호로 반영했고,
+                    특히 Thunderbird에서 높은 효과를 확인했습니다.
+                  </span>
+                </li>
 
-                    <tr>
-                      <td>
-                        BGL
-                      </td>
+                <li>
+                  <strong>로그 레벨</strong>
 
-                      <td>
-                        시간 가중치 적용 시 F1 개선
-                      </td>
-                    </tr>
+                  <span>
+                    INFO·WARN·ERROR처럼 로그가 가진 중요도 정보를
+                    연결 관계의 가중치에 포함해
+                    시간 정보와 다른 성격의 신호로 비교했습니다.
+                  </span>
+                </li>
 
-                    <tr>
-                      <td>
-                        Thunderbird
-                      </td>
-
-                      <td>
-                        시간 가중치 적용 시 F1 개선,
-                        로그 발생 집중도를 반영한 방법에서 가장 높은 결과
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        HDFS
-                      </td>
-
-                      <td>
-                        시간 가중치 적용 시 F1 개선,
-                        Top-k 방식에서 가장 높은 결과
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        방법 결합
-                      </td>
-
-                      <td>
-                        여러 방법을 함께 적용했을 때
-                        개별 적용보다 성능이 낮아지는 경우 확인
-                      </td>
-                    </tr>
-
-                  </tbody>
-
-                </table>
-
-              </div>
+              </ul>
 
             </div>
 
           </details>
+
 
           <a
             class="card-link"
@@ -1017,29 +1122,32 @@
         </article>
 
 
-        <!-- 실무 -->
+        <!-- DEVELOPMENT -->
 
         <article class="experience-card">
 
-          <p class="card-number">
-            02 · 실무
+          <p class="card-meta">
+            02 · 웹 시스템 유지보수
           </p>
 
           <h2>
-            화면에서 시작해 내부 처리 흐름까지 따라갔습니다.
+            요청과 장애를 시스템 전체 흐름에서 확인했습니다.
           </h2>
 
-          <p class="card-description">
-            운영 웹 시스템을 유지보수하며
-            화면, Java 로직, SQL, 애플리케이션 로그를 함께 확인해
-            요청을 반영하고 오류 원인을 추적했습니다.
+          <p class="card-copy">
+            운영 웹 시스템에서 사용자 요청을 분석하고
+            화면, Java 로직, SQL, 데이터 처리 과정을 함께 수정했습니다.
+            장애가 발생하면 애플리케이션 로그와 요청 흐름을 따라가며
+            문제가 시작된 지점을 좁혔습니다.
           </p>
 
           <p class="card-result">
-            <strong>결과</strong><br>
-            수정 지점뿐 아니라 연결된 기능의 영향 범위까지
-            함께 확인하는 방식으로 유지보수 업무를 수행했습니다.
+            <strong>업무 방식</strong><br>
+            수정 자체에서 끝내지 않고
+            같은 로직과 데이터를 사용하는 기능까지 확인하며
+            변경 범위를 점검했습니다.
           </p>
+
 
           <a
             class="card-link"
@@ -1051,29 +1159,32 @@
         </article>
 
 
-        <!-- 학습 -->
+        <!-- LEARNING -->
 
         <article class="experience-card">
 
-          <p class="card-number">
-            03 · 학습
+          <p class="card-meta">
+            03 · 학습과 설명
           </p>
 
           <h2>
-            배운 내용은 다른 사람에게 설명하며 다시 정리했습니다.
+            이해한 내용은 다시 설명할 수 있는 형태로 만들었습니다.
           </h2>
 
-          <p class="card-description">
-            Java 동아리에서 한 학기 동안 수업을 진행했고,
-            AI 교육과정에서는 주변 교육생의 질문과
-            코드 오류 해결을 도왔습니다.
+          <p class="card-copy">
+            Java 동아리에서 한 학기 동안 수업을 맡으며
+            알고 있던 내용을 그대로 전달하기보다
+            개념, 예제, 직접 풀어보는 순서로 다시 구성했습니다.
+            AI 교육에서도 같은 방식으로 주변 학습자의 질문과 오류를 함께 풀었습니다.
           </p>
 
           <p class="card-result">
-            <strong>결과</strong><br>
-            Java 수업을 한 학기 동안 이어갔고,
-            AI 교육과정은 우수상을 받으며 수료했습니다.
+            <strong>이어진 경험</strong><br>
+            Java 수업을 한 학기 동안 진행했고,
+            이후 AI 교육과정에서는 다른 교육생을 도우며 학습을 이어가
+            우수상을 받고 수료했습니다.
           </p>
+
 
           <a
             class="card-link"
@@ -1089,20 +1200,36 @@
     </section>
 
 
-    <!-- =========================
-         Detail
-    ========================== -->
+    <!-- =====================================
+         DETAIL
+    ====================================== -->
 
     <section
-      class="experience-section"
+      class="detail-section"
       id="experience"
-      aria-label="경험 자세히 보기"
+      aria-labelledby="experience-title"
     >
 
       <div class="wrap">
 
 
-        <!-- 연구 상세 -->
+        <div class="detail-header">
+
+          <h2 id="experience-title">
+            경험을 조금 더 풀어보면
+          </h2>
+
+          <p>
+            결과만 나열하기보다
+            무엇을 문제로 봤고 어떤 순서로 접근했는지를 중심으로 정리했습니다.
+          </p>
+
+        </div>
+
+
+        <!-- ================================
+             RESEARCH DETAIL
+        ================================= -->
 
         <article
           class="case"
@@ -1111,55 +1238,127 @@
 
           <div class="case-heading">
 
-            <p class="case-meta">
+            <p class="case-number">
               01 · 로그 이상탐지 연구
             </p>
 
-            <h2>
-              시간 정보를 더하면<br>
-              탐지가 달라질까
-            </h2>
+            <h3>
+              로그의 내용뿐 아니라<br>
+              발생 방식도 정보로 보기
+            </h3>
 
-            <p class="case-subtitle">
-              로그 그래프의 연결 방식과 시간 정보를 비교한 석사 연구
+            <p class="case-note">
+              시간적 특성을 이용한 Log-Entity Graph 개선
             </p>
 
           </div>
 
+
           <div class="case-body">
 
             <p>
-              웹 시스템을 유지보수할 때 운영 문제를 추적하며
-              로그를 자주 확인했습니다.
-              이후 데이터사이언스 석사과정에 진학하면서
-              이전 개발 경험과 AI를 연결할 수 있는 주제로
-              로그 이상탐지를 선택했습니다.
+              로그 이상탐지를 공부하면서
+              로그 메시지의 내용과 발생 순서뿐 아니라
+              <strong>
+                언제 발생했는지, 얼마나 짧은 시간에 몰렸는지,
+                어떤 중요도를 가진 로그인지
+              </strong>
+              역시 시스템 상태를 설명하는 중요한 정보라고 봤습니다.
             </p>
 
             <p>
-              기존 로그 그래프에 시간 정보를 반영했을 때
-              이상탐지 성능이 달라지는지 확인하기 위해
-              가까운 시간에 발생한 로그 관계에 가중치를 주는 방법,
-              로그 발생 집중도를 반영하는 방법,
-              일부 연결만 유지하는 Top-k 방식 등을 비교했습니다.
+              예를 들어 같은 로그 조합이라도
+              수십 분 동안 천천히 발생한 경우와
+              몇 초 안에 반복적으로 쏟아진 경우는
+              운영 상태가 다를 수 있습니다.
+              ERROR와 INFO가 같은 의미를 갖는 것도 아닙니다.
+              하지만 기존 모델에서는 이런 차이가
+              로그 간 연결 관계에 직접적으로 충분히 반영되지 않았습니다.
+            </p>
+
+
+            <div class="signal-block">
+
+              <h3>
+                그래서 세 가지 정보를 나누어 봤습니다.
+              </h3>
+
+              <div class="signal-grid">
+
+                <section class="signal">
+
+                  <p class="signal-title">
+                    시간 간격
+                  </p>
+
+                  <p>
+                    두 로그가 가까운 시간에 발생했는지를
+                    연결 관계의 강도에 반영했습니다.
+                  </p>
+
+                </section>
+
+
+                <section class="signal">
+
+                  <p class="signal-title">
+                    발생 집중도
+                  </p>
+
+                  <p>
+                    짧은 시간 동안 로그가 반복적으로 몰리는
+                    burst 현상을 별도 정보로 반영했습니다.
+                  </p>
+
+                </section>
+
+
+                <section class="signal">
+
+                  <p class="signal-title">
+                    로그 레벨
+                  </p>
+
+                  <p>
+                    INFO, WARN, ERROR 등의 중요도를 이용해
+                    같은 연결도 서로 다르게 다룰 수 있게 했습니다.
+                  </p>
+
+                </section>
+
+              </div>
+
+            </div>
+
+
+            <p>
+              각각의 정보를 기존 Log-Entity Graph의 연결 관계에
+              가중치로 사용할 수 있도록 구성하고,
+              특징을 개별적으로 적용했을 때와
+              여러 특징을 함께 적용했을 때를 비교했습니다.
             </p>
 
             <p>
-              하나의 데이터에서 얻은 결과만으로 방법의 효과를 판단하지 않기 위해
-              BGL, Thunderbird, HDFS에서 각각 실험했습니다.
-              개별 방법뿐 아니라 여러 방법을 함께 적용한 경우도 확인했습니다.
+              여기서 관심을 둔 것은
+              어떤 설정 하나가 특정 데이터에서 가장 높은 점수를 냈는지가 아니라,
+              <strong>
+                어떤 정보가 데이터가 바뀌어도 계속 의미 있는 신호로 작동하는지
+              </strong>
+              였습니다.
             </p>
 
-            <div class="case-result-box">
+
+            <div class="case-focus">
 
               <p>
+                실험 결과,
                 <strong>
-                  시간 가중치를 적용한 경우에는
-                  세 데이터셋 모두에서 F1이 개선됐습니다.
+                  로그 사이의 시간 정보를 반영한 방법은
+                  BGL, Thunderbird, HDFS 모두에서 F1을 개선했습니다.
                 </strong>
-                하지만 가장 높은 결과를 보인 방법은 데이터마다 달랐고,
-                여러 방법을 함께 적용했을 때
-                오히려 개별 방법보다 성능이 낮아지는 경우도 있었습니다.
+                데이터마다 효과가 큰 세부 방법은 달랐지만,
+                시간적 관계 자체는 세 데이터에서 공통적으로 개선을 보여
+                비교적 강건하게 활용할 수 있는 정보라는 결론을 얻었습니다.
               </p>
 
             </div>
@@ -1169,7 +1368,9 @@
         </article>
 
 
-        <!-- 실무 상세 -->
+        <!-- ================================
+             DEVELOPMENT DETAIL
+        ================================= -->
 
         <article
           class="case"
@@ -1178,54 +1379,69 @@
 
           <div class="case-heading">
 
-            <p class="case-meta">
+            <p class="case-number">
               02 · 웹 시스템 유지보수
             </p>
 
-            <h2>
-              보이는 현상에서<br>
-              원인까지 따라가기
-            </h2>
+            <h3>
+              화면의 문제를<br>
+              화면에서만 찾지 않기
+            </h3>
 
-            <p class="case-subtitle">
-              운영 시스템의 요청 반영과 오류 원인 추적
+            <p class="case-note">
+              운영 시스템의 요구사항 반영과 장애 원인 추적
             </p>
 
           </div>
 
+
           <div class="case-body">
 
             <p>
-              웹 시스템 유지보수 업무에서
-              화면 수정, Java 기반 처리 로직 수정,
-              SQL을 이용한 데이터 조회와 처리,
-              운영 오류 확인을 담당했습니다.
+              웹 시스템 유지보수 업무에서는
+              사용자의 변경 요청을 받아
+              화면과 비즈니스 로직을 수정하고,
+              필요한 데이터를 조회·처리하는 SQL을 함께 다뤘습니다.
             </p>
 
             <p>
-              사용자가 보는 화면에서 문제가 발생하더라도
-              실제 원인은 화면 코드가 아니라
-              서버의 처리 과정이나 데이터에 있을 수 있었습니다.
-              그래서 화면만 수정하기보다
-              요청이 어떤 로직과 SQL을 거치는지 함께 확인했습니다.
+              운영 중 보이는 현상만으로는
+              실제 수정 지점을 바로 알기 어려운 경우가 많았습니다.
+              화면의 값이 잘못 보이더라도
+              원인이 화면 코드에 있을 수도 있고,
+              서버의 처리 조건이나 SQL,
+              저장된 데이터 상태에 있을 수도 있기 때문입니다.
             </p>
 
             <p>
-              오류가 발생했을 때는 애플리케이션 로그와
-              요청 처리 흐름을 따라가며 원인을 좁혔습니다.
-              변경 후에는 요청한 기능이 정상적으로 동작하는지만 보는 것이 아니라,
-              같은 로직이나 데이터와 연결된 다른 기능도 확인했습니다.
+              그래서 요청이나 장애를 확인할 때
+              먼저 사용자가 어떤 동작을 했고
+              어느 시점에서 기대한 결과와 달라졌는지를 확인한 뒤,
+              해당 요청이 지나가는 로직과 SQL을 따라갔습니다.
+              오류가 있는 경우에는 애플리케이션 로그를 함께 보면서
+              실제로 문제가 발생한 지점을 좁혔습니다.
             </p>
 
-            <div class="case-result-box">
+            <p>
+              수정할 위치를 찾은 뒤에도
+              요청된 화면만 정상적으로 보이는지 확인하는 데서 끝내지 않았습니다.
+              같은 로직이나 데이터를 사용하는 기능을 함께 살펴보고
+              변경으로 인해 기존 동작이 달라질 가능성이 있는 부분을 확인했습니다.
+            </p>
+
+
+            <div class="case-focus">
 
               <p>
                 이 경험을 통해
                 <strong>
-                  화면에 나타난 현상을 하나의 지점으로만 보지 않고
-                  화면, 서버 로직, SQL, 데이터가 연결된 흐름으로 확인하는 방식
+                  사용자의 요청을 화면 수정 하나로 받아들이기보다
+                  화면 → 서버 로직 → SQL → 데이터 → 로그가 연결된 하나의 흐름으로
+                  이해하는 방식
                 </strong>
-                을 익혔습니다.
+                이 익숙해졌습니다.
+                이후 로그 이상탐지를 연구주제로 선택한 것도
+                시스템에서 발생한 현상을 기록을 통해 추적해 왔던 경험과 연결되어 있습니다.
               </p>
 
             </div>
@@ -1235,7 +1451,9 @@
         </article>
 
 
-        <!-- 학습 상세 -->
+        <!-- ================================
+             LEARNING DETAIL
+        ================================= -->
 
         <article
           class="case"
@@ -1244,51 +1462,70 @@
 
           <div class="case-heading">
 
-            <p class="case-meta">
-              03 · 학습과 지식 공유
+            <p class="case-number">
+              03 · 학습과 설명
             </p>
 
-            <h2>
-              이해한 내용을<br>
-              다시 설명해 보기
-            </h2>
+            <h3>
+              알고 있는 내용을<br>
+              가르칠 수 있게 다시 정리하기
+            </h3>
 
-            <p class="case-subtitle">
+            <p class="case-note">
               Java 동아리와 AI 교육과정에서의 학습 경험
             </p>
 
           </div>
 
+
           <div class="case-body">
 
             <p>
-              대학교 4학년 때 Java 프로그래밍을 어려워하는 학생들이 많아
-              학과에서 Java 동아리가 만들어졌습니다.
+              대학교 4학년 때
+              Java 프로그래밍을 어려워하는 학생들이 많아
+              학과에서 Java 동아리가 만들어졌고,
               요청을 받아 다른 학생과 교대로
-              한 학기 동안 Java 수업을 진행했습니다.
+              한 학기 동안 수업을 진행했습니다.
             </p>
 
             <p>
-              제가 알고 있는 내용을 그대로 전달하기보다
-              처음 배우는 사람도 흐름을 따라갈 수 있도록
-              개념과 코드의 순서를 나누어 설명하려고 했습니다.
+              혼자 코드를 작성할 때 알고 있다고 생각했던 내용도
+              다른 사람에게 설명하려고 하면
+              어느 부분을 정확히 이해하지 못했는지가 드러났습니다.
+              그래서 수업 전에 내용을 다시 확인하고,
+              개념을 먼저 설명한 뒤 짧은 코드 예제를 보고
+              직접 작성해보는 흐름으로 정리했습니다.
             </p>
 
             <p>
-              이후 AI를 배우기 위해 참여한 6개월 교육과정에서도
-              주변 교육생이 이해하기 어려워하는 부분을 설명하고
-              코드 오류가 발생하면 함께 원인을 확인했습니다.
+              한 번 설명하고 넘어가는 것보다는
+              배운 내용을 직접 사용해 볼 수 있도록
+              간단한 예제와 연습 문제를 구성하고,
+              질문이 많이 나온 부분은 다음 설명에서
+              순서나 예시를 바꾸는 방식으로 보완했습니다.
             </p>
 
-            <div class="case-result-box">
+            <p>
+              이후 AI 교육과정에서도 비슷한 방식으로 공부했습니다.
+              제가 먼저 이해한 부분은 주변 교육생에게 설명했고,
+              코드 오류가 발생하면 정답 코드를 바로 전달하기보다
+              어느 단계에서 예상과 다른 값이 나오는지 함께 따라가며
+              원인을 찾았습니다.
+            </p>
+
+
+            <div class="case-focus">
 
               <p>
-                Java 동아리 수업을 한 학기 동안 진행했고,
-                AI 교육과정은
-                <strong>우수상을 받으며 수료했습니다.</strong>
-                이후에도 새로운 내용을 배울 때
-                다른 사람에게 과정과 이유를 설명할 수 있는지
-                확인하는 방식을 선호합니다.
+                이런 과정을 반복하면서
+                새로운 내용을 배울 때
+                <strong>
+                  단순히 한 번 실행해 보는 것보다
+                  원리를 제 방식으로 다시 정리하고,
+                  다른 사람에게 설명하거나 다시 적용할 수 있는 상태까지 만드는 것
+                </strong>
+                을 중요하게 생각하게 됐습니다.
+                AI 교육과정은 우수상을 받으며 수료했습니다.
               </p>
 
             </div>
@@ -1302,9 +1539,9 @@
     </section>
 
 
-    <!-- =========================
-         Preferences
-    ========================== -->
+    <!-- =====================================
+         PREFERENCES
+    ====================================== -->
 
     <section
       class="preferences"
@@ -1314,15 +1551,14 @@
 
       <div class="wrap">
 
-        <div class="section-head">
+        <div class="section-heading">
 
           <h2 id="preferences-title">
-            이런 방식을 좋아합니다.
+            이런 방식이 잘 맞습니다.
           </h2>
 
           <p>
-            문제를 확인하고 새로운 것을 배우거나
-            다른 사람과 이야기를 나눌 때 자연스럽게 선호하는 방식입니다.
+            앞의 경험을 거치며 자연스럽게 반복하게 된 방식들입니다.
           </p>
 
         </div>
@@ -1333,13 +1569,13 @@
           <article class="preference">
 
             <h3>
-              이유를 알고 시작하기
+              먼저 구조를 이해합니다.
             </h3>
 
             <p>
-              해야 할 일을 바로 실행하기보다
-              무엇을 해결하기 위한 일인지 먼저 이해하는 편입니다.
-              목적을 알면 필요한 범위와 확인할 조건도 더 분명해집니다.
+              눈앞의 현상만 바로 고치기보다
+              앞뒤에서 어떤 과정이 연결되어 있는지 확인한 뒤
+              수정할 지점을 정하는 편입니다.
             </p>
 
           </article>
@@ -1348,13 +1584,13 @@
           <article class="preference">
 
             <h3>
-              과정이 보이는 설명
+              다른 조건에서도 다시 확인합니다.
             </h3>
 
             <p>
-              결론만 전달받기보다
-              어떤 순서와 근거를 거쳐 그 결론에 도달했는지 알고 싶어 합니다.
-              직접 따라가며 확인할 수 있는 설명을 선호합니다.
+              한 번 잘된 결과만으로 판단하기보다
+              조건이 달라져도 같은 설명이 가능한지 비교하면서
+              결과의 범위와 한계를 함께 보려고 합니다.
             </p>
 
           </article>
@@ -1363,13 +1599,13 @@
           <article class="preference">
 
             <h3>
-              조용히 생각할 수 있는 시간
+              이해한 것은 다시 정리합니다.
             </h3>
 
             <p>
-              바로 답을 내기보다
-              정보를 정리하고 서로 다른 가능성을 비교할 시간이 있을 때
-              더 편하게 판단할 수 있습니다.
+              새로운 내용을 배운 뒤
+              원리와 순서를 제 방식으로 다시 설명해 보거나
+              직접 적용하면서 빠진 부분을 확인합니다.
             </p>
 
           </article>
@@ -1381,9 +1617,9 @@
     </section>
 
 
-    <!-- =========================
-         Public scope
-    ========================== -->
+    <!-- =====================================
+         PUBLIC SCOPE
+    ====================================== -->
 
     <section
       class="scope-section"
@@ -1400,9 +1636,9 @@
           </h2>
 
           <p>
-            경험을 설명하는 데 필요한 정보만 남기고,
+            경험을 이해하는 데 필요한 내용만 남기고
             개인 생활이나 회사 내부 정보처럼
-            소개 목적과 관계없는 내용은 제외했습니다.
+            소개 목적과 관계없는 정보는 포함하지 않았습니다.
           </p>
 
         </div>
@@ -1418,15 +1654,15 @@
 
             <ul>
               <li>
-                웹 개발과 데이터사이언스 경험
+                웹 시스템 개발·유지보수 경험
               </li>
 
               <li>
-                로그 이상탐지 연구 과정과 결과
+                데이터사이언스와 로그 이상탐지 연구 경험
               </li>
 
               <li>
-                학습 경험과 문제를 다루는 방식
+                학습과 지식 공유 과정
               </li>
             </ul>
 
@@ -1469,7 +1705,7 @@
     <div class="wrap footer-inner">
 
       <p>
-        박길수 · 개발과 연구 경험을 담은 개인 페이지
+        박길수 · 개발과 데이터에서 문제를 이해해 온 과정
       </p>
 
       <a
